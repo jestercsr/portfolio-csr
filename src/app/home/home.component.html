@@ -1,0 +1,27 @@
+<div>
+    <div class="container" style="margin-bottom: 70px;">
+        <div class="row">
+            <div class="col-lg shadow border m-1">
+                <div class="text-center">
+                    <h2 class="text-primary">A propos de moi</h2>
+                    <img src="/batman_90804.webp" alt="profile picture" width="256" height="256" class="rounded-circle">
+                    <p>Salut, je m'appelle Jester CESAR, j'ai 25 ans et je suis fraîchement diplômé de la formation de Concepteur Développeur d'Applications. Je suis passioné par la création de sites web dynamiques et par les mangas tels que Naruto, Dragon Ball Z ou One Piece. Autonome, rigoureux et curieux, j'aime apprendre de nouvelles choses et je suis toujours ouvert aux nouvelles idees.</p>
+                </div>
+            </div>
+            <div class="col-lg shadow border m-1">
+                <div class="text-center">
+                    <h2 class="text-primary">Mes projets</h2>
+                    <h4>{{ featuredProjects.nom }}</h4>
+                    <ngb-carousel [interval]="8000">
+                        <ng-template ngbSlide *ngFor="let image of featuredProjects.image">
+                            <img src="{{ image }}" alt="image de {{ featuredProjects.nom }} {{ featuredProjects.image }}" class="w-100 d-block">
+                        </ng-template>
+                    </ngb-carousel>
+                    <p class="mt-2">{{ featuredProjects.sommaire }}</p>
+                    <button class="btn btn-primary"><a href="/portfolio" class="text-white" style="text-decoration: none;">Voir tous mes projets</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

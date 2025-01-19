@@ -1,0 +1,97 @@
+<div class="container text-center" style="align-items: center;">
+    <button class="btn btn-primary mb-5 shadow border" (click)="DownloadFile()"><ng-icon name="bootstrapDownload" style="font-size: 20px;"></ng-icon>Telecharger le CV format PDF</button>
+
+    <div ngbAccordion [animation]="true">
+        <div ngbAccordionItem="Compétences Techniques">
+            <h2 ngbAccordionHeader style="color: white;">
+                <button ngbAccordionButton style="background-color: #007bff; color: white; font-size: 20px;">Compétences Techniques</button>
+            </h2>
+            <div ngbAccordionCollapse>
+                <div ngbAccordionBody class="row">
+                    <div class="col">
+                        <h3 class="text-primary">Langages & Frameworks</h3>
+                        <ul class="text-md" *ngFor="let item of ['Java', 'C', 'C ++', 'Python', 'HTML 5', 'CSS 3', 'JavaScript', 'TypeScript', 'Angular', 'Node.js', 'React', 'Next.js', 'React Native', 'PHP']">{{ item }}</ul>
+                    </div>
+                    <div class="col">
+                        <h3 class="text-primary">Outils</h3>
+                        <ul class="text-md" *ngFor="let items of ['Git', 'GitHub', 'Visual Studio Code', 'Figma', 'Intellij', 'Eclipse', 'Postman', 'Jenkins', 'Docker', 'Trello', 'Gant', 'Jira', 'MySQL', 'NoSQL', 'API', 'Conception UML']">{{ items }}</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ngbAccordion [animation]="true">
+        <div ngbAccordionItem="Projets">
+            <h2 ngbAccordionHeader style="color: white;">
+                <button ngbAccordionButton style="background-color: #007bff; color: white; font-size: 20px;">Projets</button>
+            </h2>
+            <div ngbAccordionCollapse>
+                <div ngbAccordionBody *ngFor="let project of projects">
+                    <ng-template><app-cv-modal [project]="project"></app-cv-modal></ng-template>                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ngbAccordion [animation]="true">
+        <div ngbAccordionItem="Formations">
+            <h2 ngbAccordionHeader style="color: white;">
+                <button ngbAccordionButton style="background-color: #007bff; color: white; font-size: 20px;">Formations</button>
+            </h2>
+            <div ngbAccordionCollapse>
+                <div ngbAccordionBody *ngFor="let formations of formation">
+                    <ng-template><app-cv-formations [formation]="formations"></app-cv-formations></ng-template>                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ngbAccordion [animation]="true">
+        <div ngbAccordionItem="Langues">
+            <h2 ngbAccordionHeader style="color: white;">
+                <button ngbAccordionButton style="background-color: #007bff; color: white; font-size: 20px;">Langues</button>
+            </h2>
+            <div ngbAccordionCollapse>
+                <div ngbAccordionBody> 
+                    <ul>Français</ul>  
+                    <ul>Anglais C1</ul>
+                    <ul>Espagnois B1</ul>          
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ngbAccordion [animation]="true">
+        <div ngbAccordionItem="Skills">
+            <h2 ngbAccordionHeader style="color: white;">
+                <button ngbAccordionButton style="background-color: #007bff; color: white; font-size: 20px;">Soft Skills</button>
+            </h2>
+            <div ngbAccordionCollapse>
+                <div ngbAccordionBody> 
+                    <ul>Gestion de projets</ul>  
+                    <ul>Créativité</ul>
+                    <ul>Travail en équipe</ul> 
+                    <ul>Organisation</ul>         
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ngbAccordion [animation]="true">
+        <div ngbAccordionItem="Interets">
+            <h2 ngbAccordionHeader style="color: white;">
+                <button ngbAccordionButton style="background-color: #007bff; color: white; font-size: 20px;">Centre d'intérêts</button>
+            </h2>
+            <div ngbAccordionCollapse>
+                <div ngbAccordionBody> 
+                    <ul>Dessin</ul>  
+                    <ul>Jeux vidéos (EA FC [ancien Fifa], UFC, WWE 2K, NBA 2K, Tekken, etc)</ul>
+                    <ul>Manga (Naruto, Dragon Ball Z, One Piece, Death Note, My Hero Academia, Demon Slayer, Bleach, etc)</ul>
+                    <ul>Musculation</ul>           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
