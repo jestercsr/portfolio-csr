@@ -9,7 +9,7 @@ export class ProjectsService {
   projects: Project[] = [
     {
       id: 0,
-      nom: 'Site de l\'association Saint-Raphël',
+      nom: 'Site de l\'association Saint-Raphël (En cours)',
       sommaire:
         'Création du site web de l\'association Saint-Raphël.',
       description: 'Développement d\'un site web pour l\'association Saint-Raphël pour faciliter leur gestion des dons, de bénéficiaires et de membres. Projet réalisé sur Next.js.',
@@ -25,10 +25,10 @@ export class ProjectsService {
       sommaire:
         'Création de mon portfolio afin de montrer mes projets et mes connaissances.',
       description: 'Développement d\'un site web pour montrer mes projets et mes connaissances. Projet réalisé sur Angular.',
-      image: ['/portfolio-screen2.png', '/portfolio-screen3.png'],
+      image: ['/portfolio-screen1.png', '/portfolio-screen2.png', '/portfolio-screen3.png'],
       tags: [Tag.ANGULAR, Tag.TYPESCRIPT, Tag.BOOTSTRAP],
-      projectLink: '',
-      where: 'Github',
+      projectLink: 'https://portfolio-jester-cesar.vercel.app',
+      where: 'Vercel',
       titre: 'Portfolio - 2025',
     },
     {
@@ -36,7 +36,7 @@ export class ProjectsService {
       nom: 'Anime ONE',
       sommaire:
         'Projet final de la formation de Concepteur Développeur d\'Applications',
-      description: 'Développement d’une application web d’un service de streaming afin de regarder des films, séries et lectures en ligne d’animés, une plateforme de vente, gestion d’utilisateurs et des postes d’utilisateurs. Projet réalisé sur Next.js.',
+      description: 'Développement d’une application web d’un service de streaming afin de regarder des films, séries et lectures en ligne d’animés, une plateforme de vente, gestion d’utilisateurs et des postes d’utilisateurs. Projet réalisé sur Next.js avec 2 bases de données SQL et NoSQL.',
       image: ['/animeOne-screen1.png', '/animeOne-screen2.png', '/animeOne-screen3.png'],
       tags: [Tag.NEXTJS, Tag.REACT, Tag.NODEJS, Tag.TAILWINDCSS],
       projectLink: 'https://anime-one-project.vercel.app',
@@ -73,7 +73,7 @@ export class ProjectsService {
       sommaire:
         'Exercice noté du cours de Programmation fait pendant la licence Informatique',
       description: 'Programmation d’un jeu qui permet de retirer des briques et obtenir un score total en fonction des combinaisons faites par l’utilisateur. Projet réalisé en Java.',
-      image: [],
+      image: ['/damier-screen1.png', '/damier-screen2.png', '/damier-screen3.png'],
       tags: [Tag.JAVA],
       projectLink: 'https://github.com/jestercsr/JeuduDamiers',
       where: 'Github',
@@ -85,7 +85,7 @@ export class ProjectsService {
       sommaire:
         'Exercice fait pendant le cours de Programmation lors de ma licence Informatique',
       description: 'Programmation d’une version simplifiée du jeu du champs de mines. Projet realisé en Java.',
-      image: [],
+      image: ['/mine-screen1.png', '/mine-screen2.png', '/mine-screen3.png'],
       tags: [Tag.JAVA],
       projectLink: 'https://github.com/jestercsr/Champsdemine',
       where: 'Github',
