@@ -1,10 +1,24 @@
-<nav class="navbar navbar-expand-md border-bottom mb-3">
-    <div class="container">
-        <ul class="nav justify-content-center">
+<nav class="navbar navbar-expand-md navbar-light bg-white fixed-top shadow-sm" [class.bg-white]="isScrolled" [class.shadow-sm]="isScrolled">
+    <div class="container" layout="row" layout-align="center center">
+        <a class="navbar-brand fw-bold" routerLink="/"><ng-icon name="bootstrapCodeSlash" class="text-primary" style="font-size: 20px;"></ng-icon>Portfolio de Jester CESAR</a>
+        <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        >
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav" #navbarCollapse>
+        <ul class="navbar-nav">
             <li class="nav-item" *ngFor="let link of navbarLinks">
-                <a class="nav-link text-secondary hover:text-dark" routerLink="{{ link.path }}" routerLinkActive="text-dark" ariaCurrentWhenActive="page">{{ link.label }}</a>
+            <a class="nav-link text-secondary hover:underline" (click)="closeMenu()" routerLink="{{ link.path }}" routerLinkActive="text-dark" [routerLinkActiveOptions]="{ exact: true }" [attr.aria-current]="link.path === '/' ? 'page' : null" ariaCurrentWhenActive="page">{{ link.label }}</a>
             </li>
         </ul>
+        </div>
     </div>
 </nav>
 

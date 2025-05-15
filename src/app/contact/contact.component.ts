@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { FooterComponent } from '../footer/footer.component';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { bootstrapLinkedin, bootstrapGithub } from '@ng-icons/bootstrap-icons';
 
 @Component({
   selector: 'app-contact',
-  imports: [FooterComponent, NgIcon],
+  imports: [NgIcon],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
   providers: [provideIcons({ bootstrapLinkedin, bootstrapGithub })]

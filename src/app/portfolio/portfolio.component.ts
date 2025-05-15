@@ -7,12 +7,11 @@ import { ProjectsService } from '../_service/projects.service';
 import { NgbCollapseConfig, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { Tag } from '../_models/Tag';
 import { FormsModule } from '@angular/forms';
-import { FooterComponent } from '../footer/footer.component';
 
 type TagKey = keyof typeof Tag;
 @Component({
   selector: 'app-portfolio',
-  imports: [ProjectCardComponent, NgFor, NgbCollapseModule, FormsModule, CommonModule, FooterComponent],
+  imports: [ProjectCardComponent, NgFor, NgbCollapseModule, FormsModule, CommonModule],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css',
   providers: [NgbCollapseConfig]

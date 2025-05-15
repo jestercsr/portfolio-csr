@@ -10,5 +10,5 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
   providers: [provideIcons({ bootstrapLinkedin, bootstrapGithub, bootstrapTelephoneFill, bootstrapInboxFill, bootstrapPinAngleFill })]
 })
 export class FooterComponent {
-
+  currentYear: number = new Date().getFullYear();
 }

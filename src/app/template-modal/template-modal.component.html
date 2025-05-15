@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{ template.title }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismissAll()"></button>
+  </div>
+  
+  <div class="modal-body">
+    <ngb-carousel [interval]="8000">
+        <ng-template ngbSlide *ngFor="let image of template.image">
+            <img src="{{ image }}" alt="image de {{ template.title }}" class="w-100 d-block">
+        </ng-template>
+    </ngb-carousel>
+    <h3 class="mt-2">Description</h3>
+    <p>{{ template.description }}</p>
+    <p>Vous pouvez voir le projet sur {{ template.where }} : <a href="{{ template.github }}" target="_blank">ici</a></p>
+    <hr>
+    <div class="d-flex flex-wrap">
+        <div *ngFor="let tag of template.tags">
+            <div class="tag me-2 mb-1" [style.background-color]="tag.color">{{ tag }}</div>
+        </div>
+    </div>
+</div>
+  

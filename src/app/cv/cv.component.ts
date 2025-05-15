@@ -7,13 +7,12 @@ import { CvModalComponent } from "../cv-modal/cv-modal.component";
 import { ProjectsService } from '../_service/projects.service';
 import { CvFormationsComponent } from '../cv-formations/cv-formations.component';
 import { FormationService } from '../_service/formation.service';
-import { FooterComponent } from "../footer/footer.component";
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { bootstrapDownload } from '@ng-icons/bootstrap-icons';
 
 @Component({
   selector: 'app-cv',
-  imports: [NgIcon, CvModalComponent, CvFormationsComponent, NgFor, NgbAccordionDirective, NgbAccordionItem, NgbAccordionBody, NgbAccordionButton, NgbAccordionCollapse, NgbAccordionHeader, CvModalComponent, FooterComponent],
+  imports: [NgIcon, CvModalComponent, CvFormationsComponent, NgFor, NgbAccordionDirective, NgbAccordionItem, NgbAccordionBody, NgbAccordionButton, NgbAccordionCollapse, NgbAccordionHeader, CvModalComponent],
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',
   providers: [provideIcons({ bootstrapDownload })]

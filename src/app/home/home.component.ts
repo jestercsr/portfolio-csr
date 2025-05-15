@@ -4,11 +4,10 @@ import { ProjectsService } from '../_service/projects.service';
 import { Project } from '../_models/Project';
 import { NgbCarousel, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
 import { NgFor } from '@angular/common';
-import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home',
-  imports: [NgbCarousel, NgFor, NgbSlide, FooterComponent],
+  imports: [NgbCarousel, NgFor, NgbSlide ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
