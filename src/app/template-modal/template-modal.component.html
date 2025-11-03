@@ -1,22 +1,42 @@
-<div class="modal-header">
-    <h5 class="modal-title">{{ template.title }}</h5>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismissAll()"></button>
+<div class="modern-modal">
+  <div class="modal-header border-0">
+    <h2 class="modal-title fw-bold gradient-text">{{ template.title }}</h2>
+    <button class="btn-close" (click)="activeModal.dismissAll()"></button>
   </div>
-  
+
   <div class="modal-body">
-    <ngb-carousel [interval]="8000">
+    <div class="carousel-container rounded-4 overflow-hidden shadow-lg mb-4">
+      <ngb-carousel [interval]="8000">
         <ng-template ngbSlide *ngFor="let image of template.image">
-            <img src="{{ image }}" alt="image de {{ template.title }}" class="w-100 d-block">
+          <img
+            src="{{ image }}"
+            alt="image de {{ template.title }}"
+            class="w-100 d-block"
+          />
         </ng-template>
-    </ngb-carousel>
+      </ngb-carousel>
+    </div>
+
     <h3 class="mt-2">Description</h3>
     <p>{{ template.description }}</p>
-    <p>Vous pouvez voir le projet sur {{ template.where }} : <a href="{{ template.github }}" target="_blank">ici</a></p>
-    <hr>
-    <div class="d-flex flex-wrap">
-        <div *ngFor="let tag of template.tags">
-            <div class="tag me-2 mb-1" [style.background-color]="tag.color">{{ tag }}</div>
-        </div>
+    <p>
+      Voir le projet sur {{ template.where }} :<a
+        href="{{ template.github }}"
+        class="btn btn-gradient ms-2"
+        target="_blank"
+        >Ouvrir</a
+      >
+    </p>
+    <hr class="divider" />
+
+    <div class="tags-container mt-3 d-flex flex-wrap justify-content-start">
+      <span
+        *ngFor="let tag of template.tags"
+        class="tag-pill"
+        [style.borderColor]="tag.color"
+      >
+        {{ tag }}
+      </span>
     </div>
+  </div>
 </div>
-  

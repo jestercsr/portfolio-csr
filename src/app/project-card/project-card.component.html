@@ -1,15 +1,26 @@
-<div class="card shadow text-center animate__animated animate__fadeInUp" style="max-width: 320px; min-width: 320px;">
-    <div class="card-body">
-        <h5 class="card-title">{{ project.nom }}</h5>
-        <p class="card-text">{{ project.sommaire }}</p>
-        <button class="btn btn-primary" (click)="OpenProjectModal(project)">Voir plus</button>
-    </div>
+<div
+  class="project-card glass-card shadow-lg text-center animate__animated animate__fadeInUp"
+  style="max-width: 320px; min-width: 320px"
+>
+  <div class="card-body project-header">
+    <h5 class="card-title">{{ project.nom }}</h5>
+    <p class="project-desc">{{ project.sommaire }}</p>
+    <button class="btn btn-gradient" (click)="OpenProjectModal(project)">
+      Voir plus
+    </button>
+  </div>
 
-    <div class="card-footer">
-        <div class="d-flex flex-wrap justify-content-center">
-            <div *ngFor="let tag of project.tags">
-                <div class="tag me-2 mb-1" [style.background-color]="tag.color">{{ tag }}</div>
-            </div>
+  <div class="project-footer">
+    <div class="tags-container d-flex flex-wrap justify-content-center">
+      <div *ngFor="let tag of project.tags">
+        <div
+          class="tag me-2 mb-1"
+          class="tag-pill"
+          [style.borderColor]="tag.color"
+        >
+          {{ tag }}
         </div>
+      </div>
     </div>
+  </div>
 </div>

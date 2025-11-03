@@ -1,0 +1,95 @@
+.mentions-wrapper {
+  font-family: system-ui, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* TOC card */
+.card.sticky-top {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  z-index: 0;
+}
+.bg-card {
+  box-sizing: border-box;
+  display: block;
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  height: 470px;
+  line-height: 24px;
+  overflow-wrap: break-word;
+  padding: 16px;
+  text-align: start;
+  width: 249.75px;
+}
+.bg-card-body {
+  font-size: 16px;
+  font-weight: 400;
+  height: 398px;
+  line-height: 24px;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  overflow-wrap: break-word;
+  padding-inline-start: 0px;
+  padding-left: 0px;
+}
+.bg-card-body li {
+  text-decoration: none;
+}
+
+/* Section headings */
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Alerts spacing */
+.alert {
+  margin-bottom: 1rem;
+}
+
+/* Back to top button mobile */
+.back-to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2000;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-legales {
+  background: radial-gradient(circle at top center, #10001f, #0d051a 80%);
+}
+
+#hebergement a {
+  text-decoration: none;
+}
+#hebergement a:hover,
+#coordonnees a:hover {
+  text-decoration: underline;
+}
+.back {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2000;
+  border-radius: 50%;
+  align-items: center;
+}
+
+/* small responsive tweaks */
+@media (max-width: 991px) {
+  aside.col-lg-3 {
+    display: none;
+  }
+  .card {
+    padding: 1rem;
+  }
+}

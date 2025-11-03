@@ -1,0 +1,88 @@
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1
+      class="gradient-text fw-bold mb-3 animate__animated animate__fadeInDown"
+    >
+      Tarifs & Formules
+    </h1>
+    <p class="projet-modern animate__animated animate__fadeInUp">
+      Découvrez mes offres et choisissez la formule adaptée à votre projet.
+    </p>
+  </div>
+
+  <!-- Section Formules -->
+  <div class="text-center mb-5">
+    <h2
+      class="gradient-text fw-bold mb-4 animate__animated animate__fadeInDown"
+    >
+      Les Formules
+    </h2>
+  </div>
+
+  <div class="row g-4">
+    <!-- Formule 1 -->
+    <div class="col-md-4" *ngFor="let formule of formules; let i = index">
+      <div
+        class="card h-100 shadow border-0 rounded-4 p-4 animate__animated"
+        [ngClass]="getAnimation(i)"
+      >
+        <h3 class="fw-bold mb-3">{{ formule.titre }}</h3>
+        <h4 class="price">
+          À partir de <span>{{ formule.prix }}</span>
+        </h4>
+        <ul class="text-start list-unstyled small">
+          <li *ngFor="let item of formule.details">• {{ item }}</li>
+        </ul>
+        <p class="small about-modern mt-3">{{ formule.delais }}</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-5" />
+
+  <!-- Section Tarification détaillée -->
+  <section id="tarifs" class="py-5 text-center">
+    <div class="container">
+      <h2
+        class="gradient-text fw-bold mb-5 animate__animated animate__fadeInDown"
+      >
+        Tarification
+      </h2>
+
+      <div
+        class="row g-4 justify-content-center animate__animated animate__fadeInUp"
+      >
+        <div class="col-md-5 col-lg-4" *ngFor="let item of tarifs">
+          <div
+            class="pricing-card shadow-lg border-0 rounded-4 p-4 h-100 d-flex flex-column justify-content-between"
+          >
+            <div>
+              <h4 class="fw-bold mb-3">{{ item.type }}</h4>
+              <p class="fs-4 fw-bold mb-3 gradient-text" *ngIf="item.prix">
+                {{ item.prix }}
+              </p>
+            </div>
+            <button class="btn btn-tarif rounded-pill px-4">
+              Obtenir un devis
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="tarif-info mt-5 p-4 rounded-4 animate__animated animate__fadeInUp"
+      >
+        <h5 class="fw-bold mb-3">Explicatif du système de tickets</h5>
+        <p class="mb-2">
+          Chaque ticket = 1 intervention (max 2h). Au-delà, un devis est
+          proposé.
+        </p>
+        <p class="mb-2">Validité : 12 mois.</p>
+        <p class="mb-0">
+          <strong>Exemples :</strong> modifier un texte/image, ajouter une page,
+          corriger un bug, intégrer un bouton, mise à jour technique, etc.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

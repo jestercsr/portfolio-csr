@@ -1,0 +1,32 @@
+.cv-card-bg {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(0, 123, 255, 0.25),
+    transparent 70%
+  );
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.cv-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cv-card {
+  animation: fadeInUp 0.6s ease forwards;
+}

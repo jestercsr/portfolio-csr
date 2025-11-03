@@ -4,6 +4,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CvComponent } from './cv/cv.component';
 import { ContactComponent } from './contact/contact.component';
 import { TemplateComponent } from './template/template.component';
+import { MentionsLegalesComponent } from './mentions-legales/mentions-legales.component';
+import { TarifsComponent } from './tarifs/tarifs.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -11,5 +13,7 @@ export const routes: Routes = [
     {path: 'cv', component: CvComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'template', component: TemplateComponent},
+    {path: 'mentions-legales', component: MentionsLegalesComponent},
+    { path: 'tarif', component: TarifsComponent },
     {path: '**', component: HomeComponent, pathMatch: 'full'}
 ];

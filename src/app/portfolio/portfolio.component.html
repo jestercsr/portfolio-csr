@@ -1,39 +1,96 @@
-<div class="container">
-    <div class="mb-2">
-        <div>
-            <button class="btn btn-outline-primary mb-2 me-2" (click)="isCollapsed = !isCollapsed">Filtres</button>
-            <button class="btn btn-outline-secondary mb-2" (click)="ResetFilter()" [hidden]="!filtering">Réinitialiser</button>
-        </div>
-        <div [ngbCollapse]="isCollapsed">
-            <div class="border mb-2 shadow-sm" style="width: 250px;">
-                <form>
-                    <div class="row mx-0">
-                        <div class="col">
-                            <small><b>Langages :</b></small>
-                            <div *ngFor="let tag of ['typescript', 'javascript', 'java', 'cplusplus', 'html', 'css', 'python', 'php', 'mysql', 'mongodb']" class="form-group">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input position-static me-2" [(ngModel)]="tags[tag]" (change)="Filter()" [name]="tag">
-                                    <label class="form-check-label small">{{ tag | titlecase }}</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <small><b>Technologies :</b></small>
-                            <div *ngFor="let tag of ['react', 'angular', 'nodejs', 'nextjs', 'tailwindcss', 'spring']" class="form-group">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input position-static me-2" [(ngModel)]="tags[tag]" (change)="Filter()" [name]="tag">
-                                    <label class="form-check-label small">{{ tag | titlecase }}</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+<section class="portfolio-section container py-5">
+  <!-- Header -->
+  <div class="text-center mb-5 fade-in">
+    <h1 class="gradient-text fw-bold mb-3">Mes Projets</h1>
+    <p class="projet-modern">
+      Découvrez une sélection de projets conçus avec passion, combinant design,
+      performance et innovation.
+    </p>
+  </div>
+
+  <!-- Filtres modernes -->
+  <div class="filters-container mb-4 fade-in-delay">
+    <button
+      class="btn btn-glass me-2 mb-2 align-items"
+      (click)="isCollapsed = !isCollapsed"
+    >
+      <ng-icon
+        name="bootstrapFilter"
+        style="font-size: 20px; align-items: center"
+      ></ng-icon>
+    </button>
+    <button
+      class="btn btn-outline-light mb-2"
+      (click)="ResetFilter()"
+      *ngIf="filtering"
+    >
+      <i class="bi bi-arrow-clockwise me-1"></i> Réinitialiser
+    </button>
+
+    <div [ngbCollapse]="isCollapsed" class="filter-panel mt-3">
+      <div class="p-3 bg-glass rounded-4 shadow-sm">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <h6 class="gradient-text fw-semibold">Langages</h6>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+              <span
+                *ngFor="
+                  let tag of [
+                    'typescript',
+                    'javascript',
+                    'java',
+                    'cplusplus',
+                    'html',
+                    'css',
+                    'python',
+                    'php',
+                    'mysql',
+                    'mongodb'
+                  ]
+                "
+                (click)="tags[tag] = !tags[tag]; Filter()"
+                [class.active]="tags[tag]"
+                class="badge badge-filter"
+              >
+                {{ tag | titlecase }}
+              </span>
             </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <h6 class="gradient-text fw-semibold">Technologies</h6>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+              <span
+                *ngFor="
+                  let tag of [
+                    'react',
+                    'angular',
+                    'nodejs',
+                    'nextjs',
+                    'tailwindcss',
+                    'spring'
+                  ]
+                "
+                (click)="tags[tag] = !tags[tag]; Filter()"
+                [class.active]="tags[tag]"
+                class="badge badge-filter"
+              >
+                {{ tag | titlecase }}
+              </span>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="row">
-        <div *ngFor="let project of projects" class="col-lg-4 col-md-6 mb-4">
-            <app-project-card [project]="project"></app-project-card>
-        </div>
+  </div>
+
+  <!-- Liste des projets -->
+  <div class="row g-4 justify-content-center">
+    <div
+      *ngFor="let project of projects"
+      class="col-xl-4 col-lg-6 col-md-6 fade-up"
+    >
+      <app-project-card [project]="project"></app-project-card>
     </div>
-</div>
+  </div>
+</section>

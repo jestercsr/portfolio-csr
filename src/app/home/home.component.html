@@ -1,40 +1,187 @@
-<div>
-    <section id="home" class="min-vh-100 d-flex align-items-center">
-        <div class="container text-center">
-          <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">
-            Bonjour, je suis <span class="text-primary">Jester</span>
-          </h1>
-          <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
-            Développeur web passionné, découvrez mes projets et mes connaissances.
-          </p>
-          <a href="/portfolio" class="btn btn-primary btn-lg animate__animated animate__zoomIn animate__delay-2s">
-            Voir mes projets
-          </a>
-        </div>
-    </section>
-      
-    <div class="container" style="margin-bottom: 70px; margin-top: 70px;">
-        <div class="row">
-            <div class="col-lg shadow border m-1">
-                <div class="text-center">
-                    <h2 class="text-primary">À propos de moi</h2>
-                    <img src="/jester-cesar.png" alt="profile picture" width="256" height="256" class="rounded-circle">
-                    <p>Salut, je m'appelle Jester CESAR, j'ai 25 ans et je suis fraîchement diplômé de la formation de Concepteur Développeur d'Applications. Je suis passioné par la création de sites web dynamiques et par les mangas tels que Naruto, Dragon Ball Z ou One Piece. Autonome, rigoureux et curieux, j'aime apprendre de nouvelles choses et je suis toujours ouvert aux nouvelles idees.</p>
-                </div>
-            </div>
-            <div class="col-lg shadow border m-1">
-                <div class="text-center">
-                    <h2 class="text-primary">Mes projets</h2>
-                    <h4>{{ featuredProjects.nom }}</h4>
-                    <ngb-carousel [interval]="8000">
-                        <ng-template ngbSlide *ngFor="let image of featuredProjects.image">
-                            <img src="{{ image }}" alt="image de {{ featuredProjects.nom }} {{ featuredProjects.image }}" class="w-100 d-block">
-                        </ng-template>
-                    </ngb-carousel>
-                    <p class="mt-2">{{ featuredProjects.sommaire }}</p>
-                    <button class="btn btn-primary"><a href="/portfolio" class="text-white" style="text-decoration: none;">Voir tous mes projets</a></button>
-                </div>
-            </div>
-        </div>
+<section
+  id="home"
+  class="hero-section d-flex align-items-center justify-content-center text-center"
+>
+  <div class="container position-relative z-1">
+    <h1 class="display-3 fw-bold mb-4 fade-in">
+      Bonjour, je suis
+      <span class="gradient-text">Jester</span>
+    </h1>
+    <p class="projet-modern lead mb-4 fade-in-delay">
+      Développeur web passionné, découvrez mes projets et mes connaissances.
+    </p>
+    <a
+      href="/portfolio"
+      class="btn btn-glass btn-lg animate__animated animate__zoomIn animate__delay-2s"
+    >
+      Voir mes projets
+    </a>
+  </div>
+  <div class="hero-bg"></div>
+</section>
+
+<section id="about" class="mention-modern container py-5">
+  <div class="row align-items-center g-5">
+    <!-- Texte -->
+    <div class="col-lg-6 fade-in">
+      <h2 class="gradient-text fw-bold mb-3">À propos de moi</h2>
+      <p class="lead mb-4">
+        Salut! Je suis <strong>Jester CESAR</strong>, un développeur web
+        freelance passionné par la création de sites web dynamiques et modernes
+        et par les mangas tels que Naruto, Dragon Ball Z ou One Piece. Autonome,
+        rigoureux et curieux, j'aime apprendre de nouvelles choses et je suis
+        toujours ouvert aux nouvelles idées.
+      </p>
+      <p class="lead mb-4">
+        Curieux, rigoureux et créatif, j’aime transformer des idées en
+        interfaces élégantes et performantes. J’accorde une attention
+        particulière à l’UX/UI et à la fluidité de chaque interaction.
+      </p>
+      <div class="mt-4">
+        <a class="btn btn-glass" (click)="DownloadFile()">
+          <i class="bi bi-file-earmark-person me-2"></i>
+          Télécharger mon CV
+        </a>
+      </div>
     </div>
-</div>
+
+    <!-- Image -->
+    <div class="col-lg-6 text-center position-relative fade-in-delay">
+      <div class="profile-wrapper mx-auto">
+        <img
+          src="/jester-cesar.png"
+          alt="Jester CESAR"
+          class="profile-img rounded-circle"
+        />
+        <div class="glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="featured-project container py-5">
+  <div class="text-center mb-5 fade-in about-modern">
+    <h2 class="gradient-text fw-bold">Mon dernier projet</h2>
+    <p>Un aperçu de mon travail le plus récent. Explorez mes créations.</p>
+  </div>
+
+  <div class="project-card mx-auto fade-in-delay">
+    <div class="project-image-wrapper">
+      <ngb-carousel [interval]="6000" class="rounded-4 overflow-hidden">
+        <ng-template ngbSlide *ngFor="let image of featuredProjects.image">
+          <img
+            [src]="image"
+            [alt]="featuredProjects.nom"
+            class="w-100 d-block project-image"
+          />
+        </ng-template>
+      </ngb-carousel>
+      <div
+        class="project-overlay d-flex flex-column justify-content-center text-center"
+      >
+        <h3 class="text-white fw-bold mb-2">{{ featuredProjects.nom }}</h3>
+        <p class="text-light small">{{ featuredProjects.sommaire }}</p>
+        <a
+          href="/portfolio"
+          routerLinkActive="active"
+          class="btn btn-glass mt-3 align-self-center"
+          >Voir tous mes projets</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION TARIFS -->
+<section id="tarifs" class="pricing-section py-5">
+  <div class="container text-center">
+    <h2 class="gradient-text fw-bold mb-5 fade-up">Mes Formules</h2>
+
+    <p class="fade-up-delay about-modern">Inclus dans chaque formule :</p>
+    <ul class="list-inline small fade-up-delay mb-5 about-modern">
+      <li class="list-inline-item mx-2">💼 Facturation</li>
+      <li class="list-inline-item mx-2">🚀 Livraison tous les accès</li>
+      <li class="list-inline-item mx-2">⏱ Engagement sur les délais</li>
+      <li class="list-inline-item mx-2">
+        💾 Sauvegarde du site avant mise en ligne
+      </li>
+      <li class="list-inline-item mx-2">
+        📄 Mentions légales, politique de confidentialité
+      </li>
+    </ul>
+
+    <div class="row g-4 justify-content-center">
+      <!-- FORMULE 1 -->
+      <div class="col-md-4 fade-up">
+        <div class="card pricing-card shadow-lg border-0 rounded-4 bg-glass">
+          <div class="card-body">
+            <h3 class="card-title gradient-text">Formule 1</h3>
+            <h4 class="price">à partir de <span>1500 €</span></h4>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>✅ Site vitrine (max 5 pages)</li>
+              <li>✅ Maquette simple</li>
+              <li>✅ 1 formulaire de contact</li>
+              <li>✅ Cahier des charges personnalisé</li>
+              <li>✅ Mise en ligne (hébergement client)</li>
+              <li>✅ 3 tickets de maintenance inclus</li>
+            </ul>
+            <p class="small about-modern">
+              Délais 10 à 15 jours (si 15 → 2500 €)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULE 2 -->
+      <div class="col-md-4 fade-up-delay">
+        <div class="card pricing-card shadow-lg border-0 rounded-4 bg-glass">
+          <div class="card-body">
+            <h3 class="card-title gradient-text">Formule 2</h3>
+            <h4 class="price">à partir de <span>4000 €</span></h4>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>✅ Site vitrine / e-commerce léger (max 8 pages)</li>
+              <li>✅ Maquette responsive</li>
+              <li>✅ Formulaires avancés</li>
+              <li>✅ Tableau de bord Admin personnalisé</li>
+              <li>✅ Aide achat nom de domaine + hébergement</li>
+              <li>✅ SEO</li>
+              <li>✅ 6 tickets de maintenance inclus</li>
+            </ul>
+            <p class="small about-modern">
+              Délais 3 semaines (si 22 jours → 5500 €)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULE 3 -->
+      <div class="col-md-4 fade-up-delay-2">
+        <div class="card pricing-card shadow-lg border-0 rounded-4 bg-glass">
+          <div class="card-body">
+            <h3 class="card-title gradient-text">Formule 3</h3>
+            <h4 class="price">à partir de <span>8000 €</span></h4>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>✅ Accompagnement complet</li>
+              <li>✅ Site e-commerce ou app web (max 12 pages)</li>
+              <li>✅ Plusieurs maquettes UX/UI</li>
+              <li>✅ Contrat de suivi mensuel possible</li>
+              <li>✅ Aide à la rédaction de contenu</li>
+              <li>✅ Interface admin complète (CRUD)</li>
+              <li>✅ 10 tickets de maintenance inclus</li>
+            </ul>
+            <p class="small about-modern">
+              Délais 1 à 3 mois (si 3 mois → 12000 €)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a
+      href="/tarif"
+      class="btn btn-glass mt-5 btn-lg animate__animated animate__zoomIn animate__delay-2s"
+    >
+      Voir tous mes tarifs
+    </a>
+  </div>
+</section>

@@ -1,0 +1,301 @@
+<div class="mentions-wrapper">
+  <div class="container my-5">
+    <div class="row g-4">
+      <!-- TOC -->
+      <aside class="col-lg-3 d-none d-lg-block">
+        <div class="card sticky-top" style="top: 100px">
+          <div class="bg-card">
+            <h5 class="card-title mb-3">Table des matières</h5>
+            <ul class="bg-card-body mb-0">
+              <li
+                *ngFor="
+                  let id of [
+                    'identite',
+                    'coordonnees',
+                    'immatriculation',
+                    'activite',
+                    'publication',
+                    'hebergement',
+                    'propriete',
+                    'conditions',
+                    'donnees',
+                    'litiges',
+                    'contact'
+                  ]
+                "
+              >
+                <button
+                  class="btn w-100 text-start py-1"
+                  [class.gradient-text]="activeSection === id"
+                  [class.mention-modern]="activeSection != id"
+                  (click)="scrollToSection(id)"
+                >
+                  {{ getLabel(id) }}
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="col-lg-9 mt-5" id="print-area">
+        <div class="card p-4">
+          <div class="d-flex justify-content-between align-items-start mb-4">
+            <div>
+              <h1 class="h3 mb-1">Mentions Légales</h1>
+              <p class="about-modern">Dernière mise à jour : 3 novembre 2025</p>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm" (click)="printPage()" title="Imprimer">
+                <ng-icon name="bootstrapPrinterFill"></ng-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- Status alerts -->
+          <div *ngIf="successMessage" class="alert alert-success">
+            {{ successMessage }}
+          </div>
+          <div *ngIf="errorMessage && !isSending" class="alert alert-danger">
+            {{ errorMessage }}
+          </div>
+
+          <!-- CONTENT SECTIONS -->
+          <section id="identite" class="mb-5">
+            <h2>Identité de l'entreprise</h2>
+            <p>
+              Le site Portfolio de Jester CESAR est édité par la société de
+              Monsieur Jester CESAR, dont le siège social est situé au 10 Rue de
+              Varennes à GOUSSAINVILLE 95190, France.
+            </p>
+          </section>
+
+          <section id="coordonnees" class="mb-5">
+            <h2>Coordonnées</h2>
+            <div class="bg-legales p-3 rounded mb-3">
+              <h5>Siège social</h5>
+              <p class="mb-0">10 Rue de Varennes 95190 GOUSSAINVILLE, France</p>
+              <p class="mb-0">
+                Email:
+                <a href="mailto:jester.csr@gmail.com"
+                  >jester.csr&#64;gmail.com</a
+                >
+              </p>
+            </div>
+            <p>
+              Pour toute question relative à vos commandes ou à nos services,
+              nous vous invitons à contacter notre service client par email.
+              Nous nous efforçons de répondre à toutes les demandes dans un
+              délai de 24 heures ouvrées.
+            </p>
+          </section>
+
+          <section id="immatriculation" class="mb-5">
+            <h2>Numéros d'immatriculation</h2>
+            <p>
+              La société de Monsieur Jester CESAR est une entreprise
+              immatriculée au Registre National des Entreprises (RNE). Ce
+              registre liste les entreprises de France. Il est tenu par l’INPI
+              sous le numéro 992 596 338, inscrite le 13/10/2025.
+            </p>
+            <div class="bg-legales p-3 rounded">
+              <ul class="mb-0">
+                <li><strong>SIREN :</strong> 992 596 338</li>
+                <li><strong>SIRET (siège) :</strong> 992 596 338 00010</li>
+                <li><strong>Forme juridique :</strong> Profession libérale</li>
+                <li>
+                  <strong>Activités (NAF08) :</strong> Programmation
+                  informatique (6201Z)
+                </li>
+                <li><strong>TVA :</strong> FR91992596338</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="activite" class="mb-5">
+            <h2>Activités (NAF08)</h2>
+            <p>
+              L'activité principale est la programmation informatique de nature
+              libérale non réglementée.
+            </p>
+          </section>
+
+          <section id="publication" class="mb-5">
+            <h2>Direction de publication</h2>
+            <p>
+              Le directeur de la publication du site Portfolio de Jester CESAR
+              est Monsieur Jester CESAR, développeur web free-lance.
+            </p>
+          </section>
+
+          <section id="hebergement" class="mb-5">
+            <h2>Hébergement du site</h2>
+            <p>
+              Le site Portfolio de Jester CESAR est hébergé par Vercel, 222 Bd
+              Gustave Flaubert, 63000 Clermont-Ferrand. A l'adresse suivante:
+              <a
+                href="https://portfolio-jester-cesar.vercel.app"
+                target="_blank"
+                >portfolio-jester-cesar.vercel.app</a
+              >
+            </p>
+          </section>
+
+          <section id="propriete" class="mb-5">
+            <h2>Propriété intellectuelle</h2>
+            <p>
+              L'ensemble des éléments constituant le site est protégé par le
+              droit d'auteur et la propriété intellectuelle.
+            </p>
+          </section>
+
+          <section id="conditions" class="mb-5">
+            <h2>Conditions d'utilisation</h2>
+            <p>
+              L'utilisation du site Portfolio de Jester CESAR est soumise aux
+              présentes conditions d'utilisation.
+            </p>
+          </section>
+
+          <section id="donnees" class="mb-5">
+            <h2>Protection des données personnelles</h2>
+            <p>
+              Portfolio de Jester CESAR accorde une importance particulière à la
+              protection de vos données personnelles.
+            </p>
+            <div class="bg-legales p-3 rounded">
+              <h6>Contact DPO</h6>
+              <p class="mb-0">
+                <strong>Jester CESAR</strong> - jester.csr&#64;gmail.com
+              </p>
+            </div>
+          </section>
+
+          <section id="litiges" class="mb-5">
+            <h2>Litiges et droit applicable</h2>
+            <p>
+              Les présentes mentions légales sont soumises au droit français.
+            </p>
+          </section>
+
+          <!-- CONTACT SECTION -->
+          <section id="contact" class="mb-5">
+            <h2>Contact</h2>
+            <p>Pour toute question, utilisez le formulaire ci-dessous :</p>
+
+            <form (submit)="onSubmit($event)" class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Nom complet *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="name"
+                  name="name"
+                  required
+                />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Email *</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  [(ngModel)]="email"
+                  name="email"
+                  required
+                />
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Sujet *</label>
+                <select
+                  class="form-select"
+                  [(ngModel)]="subject"
+                  name="subject"
+                  required
+                >
+                  <option value="">Sélectionnez un sujet</option>
+                  <option value="legal_question">Question juridique</option>
+                  <option value="intellectual_property">
+                    Propriété intellectuelle
+                  </option>
+                  <option value="data_protection">
+                    Protection des données
+                  </option>
+                  <option value="terms_conditions">
+                    Conditions d'utilisation
+                  </option>
+                  <option value="content_report">Signalement de contenu</option>
+                  <option value="other">Autre question</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Message *</label>
+                <textarea
+                  class="form-control"
+                  rows="6"
+                  maxlength="500"
+                  [(ngModel)]="message"
+                  (input)="handleMessageInput($event)"
+                  name="message"
+                  required
+                ></textarea>
+                <div class="form-text text-end">
+                  {{ charCount }}/500 caractères
+                </div>
+              </div>
+
+              <div class="col-12 d-flex align-items-start">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    required
+                  />
+                </div>
+                <label class="form-check-label ms-2">
+                  J'accepte que mes données soient traitées conformément à la
+                  politique de confidentialité.
+                </label>
+              </div>
+
+              <div class="col-12">
+                <button
+                  class="btn btn-glass"
+                  type="submit"
+                  [disabled]="isSending"
+                >
+                  <span *ngIf="!isSending">Envoyer ma demande</span>
+                  <span *ngIf="isSending">Envoi en cours...</span>
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <div
+            class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center"
+          >
+            <small class="about-modern"
+              >Document mis à jour le 3 novembre 2025</small
+            >
+            <button class="btn btn-link" (click)="scrollToTop()">
+              Retour en haut
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- floating back-to-top for mobile -->
+  <button class="btn-glass back" (click)="scrollToTop()">
+    <ng-icon
+      name="bootstrapArrowUpShort"
+      style="font-size: 40px; align-items: center"
+    ></ng-icon>
+  </button>
+</div>

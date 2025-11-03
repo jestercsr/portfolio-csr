@@ -1,21 +1,103 @@
-<footer class="footer text-blue mt-4">
-    <div class="row" style="align-items: center;">
-        <div class="col" style="display: grid; grid-template-columns: auto auto; align-items: center;">
-            <img src="/jester-cesar.png" alt="profile picture" width="170" height="170" class="rounded-circle" style="margin-left: auto;">
-            <div class="flex">
-                <h1 class="text-primary">Jester CESAR</h1>
-                <h4 style="font-weight: 300;">Concepteur Développeur d'Applications Junior</h4>
-            </div>
-        </div>
+<section class="contact-cta text-center py-5">
+  <div class="container">
+    <h2 class="fw-bold mb-3 gradient-text">
+      Discutons de votre prochain projet 🚀
+    </h2>
+    <p class="mb-4 lead about-modern">
+      Vous avez une idée, un besoin ou une collaboration à proposer ?
+      Envoyez-moi un message, je vous répondrai rapidement.
+    </p>
 
-        <div class="col gap-2 py-2" style="text-align: center;">
-            <h5><ng-icon name="bootstrapTelephoneFill" class="text-primary" style="font-size: 20px;"></ng-icon>06 04 52 32 70</h5>
-            <h5><ng-icon name="bootstrapInboxFill" class="text-primary" style="font-size: 20px;"></ng-icon>jester.csr&#64;gmail.com</h5>
-            <h5><ng-icon name="bootstrapPinAngleFill" class="text-primary" style="font-size: 20px;"></ng-icon>Goussainville, 95190 France</h5>
-        </div>
-        <div class="text-center">
-            <p>&copy; {{ currentYear }} Jester CESAR. Tous droits reservés</p>
-        </div>
+    <form
+      class="contact-form row justify-content-center g-3"
+      (submit)="onSubmit($event)"
+    >
+      <div class="col-md-4">
+        <label for="name">Nom</label>
+        <input
+          type="text"
+          [(ngModel)]="name"
+          name="name"
+          class="form-control rounded-pill"
+          placeholder="John Doe"
+          required
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          class="form-control rounded-pill"
+          placeholder="john_doe@nom_domaine.com"
+          required
+        />
+      </div>
+      <div class="col-md-8">
+        <label for="message">Message</label>
+        <textarea
+          [(ngModel)]="message"
+          name="message"
+          class="form-control rounded-4"
+          rows="3"
+          placeholder="Votre message..."
+          required
+        ></textarea>
+      </div>
+      <div class="col-md-8">
+        <button
+          type="submit"
+          class="btn btn-glass w-100 py-2 rounded-pill"
+          [disabled]="isSending"
+        >
+          {{ isSending ? "Envoi..." : "Envoyer le message" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
 
+<footer class="footer py-5">
+  <div class="container" style="margin-top: 40px">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-5 d-flex align-items-center mb-4 mb-md-0">
+        <img
+          src="/jester-cesar.png"
+          alt="profile picture"
+          width="100"
+          height="100"
+          class="rounded-circle me-3 shadow-sm"
+        />
+        <div>
+          <h4 class="fw-bold gradient-text mb-0">Jester CESAR</h4>
+          <p class="mb-0">Développeur Full-Stack Freelance</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <ul class="list-unstyled mb-0">
+          <li class="mb-2 nav-text">
+            <ng-icon name="bootstrapTelephoneFill" class="me-2"></ng-icon>
+            <a href="tel:0604523270" class="accordion-footer">06 04 52 32 70</a>
+          </li>
+          <li class="mb-2 nav-text">
+            <ng-icon name="bootstrapInboxFill" class="me-2"></ng-icon>
+            <a href="mailto:jester.csr@gmail.com" class="accordion-footer"
+              >jester.csr&#64;gmail.com</a
+            >
+          </li>
+          <li class="nav-text">
+            <ng-icon name="bootstrapPinAngleFill" class="me-2"></ng-icon>
+            Goussainville, 95190 France
+          </li>
+        </ul>
+      </div>
     </div>
+
+    <div class="text-center mt-4 small about-modern">
+      © {{ currentYear }} Jester CESAR — Tous droits réservés.
+      <a href="/mentions-legales">Mentions Légales</a>
+    </div>
+  </div>
 </footer>

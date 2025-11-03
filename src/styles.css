@@ -1,17 +1,429 @@
 /* You can add global styles to this file, and also import other style files */
 .container {
-    max-width: 1140px;
+  max-width: 1140px;
 }
 .nav-container {
-    justify-content: center;
-    justify-items: center;
+  justify-content: center;
+  justify-items: center;
 }
 .tag {
-    padding: 0 20px;
-    height: 30px;
-    width: fit-content;
-    font-size: 14px;
-    line-height: 30px;
-    border-radius: 25px;
-    color: white;
+  padding: 0 20px;
+  height: 30px;
+  width: fit-content;
+  font-size: 14px;
+  line-height: 30px;
+  border-radius: 25px;
+  color: white;
+}
+/* ----- THEMES GLOBALS ----- */
+body {
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+.mention-modern:hover {
+  text-decoration: underline;
+}
+.nav-text {
+  text-decoration: none;
+  background: linear-gradient(90deg, #0e0e98, #06b2e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-modern a {
+  text-decoration: none;
+}
+.about-modern a:hover {
+  text-decoration: underline;
+}
+
+/* 🌞 LIGHT THEME */
+body.light-theme {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+body.light-theme .hero-section {
+  background: radial-gradient(circle at top center, #0e0e98, #ffffff 40%);
+  color: #1a1a1a;
+}
+body.light-theme .gradient-text {
+  background: linear-gradient(90deg, #0e0e98, #06b2e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body.light-theme .section-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+body.light-theme .about-modern {
+  color: #9f9e9e;
+  line-height: 1.6;
+  font-size: smaller;
+}
+body.light-theme .mention-modern {
+  color: #9f9e9e;
+  line-height: 1.6;
+}
+body.light-theme .about-modern a {
+  color: #9f9e9e;
+}
+body.light-theme .portfolio-section .templates-hero {
+  color: #333;
+}
+body.light-theme .projet-modern {
+  position: relative;
+  color: #bdbdbd;
+  line-height: 1.6;
+}
+body.light-theme .bg-glass,
+body.light-theme .card,
+body.light-theme .navbar,
+body.light-theme .modern-modal {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #1a1a1a !important;
+}
+body.light-theme .btn-gradient {
+  background: var(--primary-gradient);
+  color: #06b2e6;
+}
+body.light-theme .btn-gradient:hover {
+  text-decoration: underline;
+}
+body.light-theme .btn-close {
+  filter: invert(0);
+  opacity: 0.8;
+  transition: 0.3s;
+}
+body.light-theme .cv-card {
+  background: rgba(215, 215, 218, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  transform: translateY(0);
+  color: #333;
+}
+body.light-theme .cv-card-content {
+  color: #3e3d3d;
+}
+body.light-theme .footer {
+  --footer-bg: #f9f9f9;
+  color: #333;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+body.light-theme .contact-cta {
+  background: radial-gradient(circle at bottom center, #53a5f7, #0e0e98 40%);
+}
+body.light-theme .contact-form .form-control {
+  background: rgba(255, 255, 255, 0.752);
+  color: #333;
+}
+body.light-theme .contact-form .btn-glass:hover {
+  background: #ffffff;
+  color: white;
+}
+body.light-theme .pricing-section {
+  background: #ffffff;
+  color: #111;
+}
+body.light-theme .bg-legales {
+  background: radial-gradient(circle at top center, #06b2e6, #ffffff 80%);
+  color: #333;
+}
+body.light-theme .bg-legales a {
+  text-decoration: none;
+  color: #333;
+}
+body.light-theme #hebergement a {
+  color: #333;
+}
+
+/* 🌙 DARK THEME */
+body.dark-theme {
+  background: radial-gradient(circle at top center, #10001f, #0f051e 80%);
+  color: #f8f9fa;
+}
+body.dark-theme .theme-switch {
+  background: var(--bs-primary-bg);
+}
+body.dark-theme .gradient-text {
+  background: linear-gradient(90deg, #06b2e6, #0e0e98);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body.dark-theme .btn-glass {
+  background: linear-gradient(90deg, #06b2e6, #0e0e98);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+body.dark-theme .about-modern {
+  color: #ddd;
+  font-size: smaller;
+}
+body.dark-theme .mention-modern {
+  color: #ddd;
+  line-height: 1.6;
+}
+body.dark-theme .about-modern a {
+  color: #ddd;
+}
+body.dark-theme .bg-glass,
+body.dark-theme .card,
+body.dark-theme .navbar,
+body.dark-theme .navbar-toggler,
+body.dark-theme .modern-modal {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: white !important;
+}
+body.dark-theme .modern-modal {
+  background: radial-gradient(circle at top center, #10001f, #0d051a 80%);
+}
+body.dark-theme .nav-text {
+  background: linear-gradient(90deg, #06b2e6, #0e0e98);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body.dark-theme .btn-gradient {
+  background: var(--primary-gradient);
+  color: #0e0e98;
+}
+body.dark-theme .btn-gradient:hover {
+  text-decoration: underline;
+}
+body.dark-theme .btn-close {
+  filter: invert(1);
+  opacity: 0.8;
+  transition: 0.3s;
+}
+body.dark-theme .tag-pill {
+  color: #fff;
+}
+body.dark-theme .tag-pill:hover {
+  color: #0e0e98;
+}
+body.dark-theme .modern-modal {
+  color: var(--text-dark);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(14, 14, 152, 0.6);
+  overflow: hidden;
+}
+body.dark-theme .accordion-body-custom {
+  background: rgb(0, 0, 0);
+  color: white;
+  list-style: none;
+}
+body.dark-theme .accordion-btn {
+  background: linear-gradient(90deg, #06b2e6, #0e0e98);
+}
+body.dark-theme .cv-card {
+  background: rgba(15, 15, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  transform: translateY(0);
+}
+body.dark-theme .bg-legales a {
+  text-decoration: none;
+  color: white;
+}
+body.dark-theme #hebergement a {
+  color: white;
+}
+
+/* BUTTON */
+.btn-glass {
+  background: linear-gradient(90deg, #0e0e98, #06b2e6);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+.btn-glass:hover {
+  text-decoration: underline;
+  color: white;
+  transform: translateY(-3px);
+}
+.btn-close-white:hover {
+  opacity: 1;
+}
+
+/* --- Tags --- */
+.tags-container {
+  gap: 6px;
+}
+.tag-pill {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #333;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+.tag-pill:hover {
+  border-color: #fff;
+  color: #06b2e6;
+  transform: scale(1.05);
+}
+
+.modern-modal {
+  backdrop-filter: blur(16px);
+  color: var(--text-light);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+/* --- CV --- */
+.cv-accordion {
+  background: rgba(0, 0, 0, 0.413);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.accordion-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #0e0e98, #06b2e6);
+  border: none;
+  padding: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
+  border-radius: 0;
+  font-size: 1.1rem;
+  transition: background 0.3s ease;
+}
+.accordion-body-custom {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+.cv-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 25px rgba(0, 123, 255, 0.2);
+}
+
+/* --- CONTACT -- */
+body.dark-theme .contact-btn {
+  background: radial-gradient(circle at left center, #10001f, #0e0e98 70%);
+  border: 1px solid rgba(255, 255, 255, 0.708);
+}
+
+body.light-theme .accordion-contact {
+  background: linear-gradient(90deg, #e3e2e1, #06b2e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateY(-1px);
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 25px;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+body.dark-theme .accordion-contact {
+  background: linear-gradient(90deg, #06b2e6, #0e0e98);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateY(-1px);
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 25px;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+body.light-theme .accordion-footer {
+  background: linear-gradient(90deg, #0e0e98, #06b2e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateY(-1px);
+  text-decoration: none;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+body.dark-theme .accordion-footer {
+  background: linear-gradient(90deg, #06b2e6, #0e0e98);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateY(-1px);
+  text-decoration: none;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+/* ---TARIFS--- */
+.pricing-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+body.dark-theme .pricing-card {
+  background: linear-gradient(90deg, #121212, #1d132e);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.btn-tarif {
+  position: relative;
+  border-radius: 16px;
+  z-index: 1;
+}
+.btn-tarif:hover {
+  background: linear-gradient(90deg, #0e0e98, #06b2e6);
+  border: none;
+}
+body.dark-theme .btn-tarif {
+  color: white;
+}
+.btn-tarif::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* épaisseur du border */
+  border-radius: inherit;
+  background: linear-gradient(90deg, #06b2e6, #0e0e98);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+body.dark-theme .pricing-card:hover {
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #print-area,
+  #print-area * {
+    visibility: visible !important;
+  }
+
+  #print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white !important;
+  }
+
+  a::after {
+    content: "" !important;
+  }
 }

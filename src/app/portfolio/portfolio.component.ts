@@ -4,20 +4,31 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
 import { Project } from '../_models/Project';
 import { CommonModule, NgFor } from '@angular/common';
 import { ProjectsService } from '../_service/projects.service';
-import { NgbCollapseConfig, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbCollapseConfig,
+  NgbCollapseModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import { Tag } from '../_models/Tag';
 import { FormsModule } from '@angular/forms';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { bootstrapFilter } from '@ng-icons/bootstrap-icons';
 
 type TagKey = keyof typeof Tag;
 @Component({
   selector: 'app-portfolio',
-  imports: [ProjectCardComponent, NgFor, NgbCollapseModule, FormsModule, CommonModule],
+  imports: [
+    ProjectCardComponent,
+    NgFor,
+    NgbCollapseModule,
+    FormsModule,
+    CommonModule,
+    NgIcon,
+  ],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css',
-  providers: [NgbCollapseConfig]
+  providers: [NgbCollapseConfig, provideIcons({ bootstrapFilter })],
 })
 export class PortfolioComponent implements OnInit {
-
   projects = {} as Project[];
 
   isCollapsed: boolean = true;
@@ -37,19 +48,23 @@ export class PortfolioComponent implements OnInit {
     php: false,
     mysql: false,
     mongodb: false,
-    spring: false
+    spring: false,
   };
 
   filtering: boolean = false;
-  
-  constructor(private titleService: Title, private projectsService: ProjectsService, config: NgbCollapseConfig) {
-    this.titleService.setTitle('Portfolio - Portfolio de Jester CESAR');
-    config.animation = true
+
+  constructor(
+    private titleService: Title,
+    private projectsService: ProjectsService,
+    config: NgbCollapseConfig
+  ) {
+    this.titleService.setTitle('Projets - Portfolio de Jester CESAR');
+    config.animation = true;
   }
   ngOnInit(): void {
-    this.projects = this.projectsService.GetProjects()
+    this.projects = this.projectsService.GetProjects();
   }
-  Filter(){
+  Filter() {
     let filterTag: Tag[] = [];
     for (let tag in this.tags) {
       if (this.tags[tag as TagKey]) {
@@ -63,7 +78,7 @@ export class PortfolioComponent implements OnInit {
     this.projects = this.projectsService.GetProjectsByFilter(filterTag);
   }
 
-  ResetFilter(){
+  ResetFilter() {
     for (let tag in this.tags) {
       this.tags[tag as TagKey] = false;
     }

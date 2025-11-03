@@ -1,21 +1,241 @@
-#home {
-    padding-top: 100px;
-    padding-bottom: 100px;
+/* HERO BACKGROUND */
+.hero-section {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at top center, #0e0e98, #0f051e 60%);
+  color: white;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+/* GLASS EFFECT */
+.bg-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bg-glass:hover {
+  transform: translateY(-5px);
+}
+
+/* ---- ABOUT SECTION MODERNE ---- */
+.about-modern {
+  position: relative;
+}
+.profile-wrapper {
+  position: relative;
+  width: 260px;
+  height: 260px;
+}
+.mention-modern:hover {
+  text-decoration: none;
+}
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.profile-wrapper:hover .profile-img {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(14, 14, 152, 0.6);
+}
+
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14, 14, 152, 0.6), transparent 70%);
+  filter: blur(60px);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* TEXTE */
+.about-modern h2 {
+  font-size: 2.4rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .about-modern {
+    text-align: center;
   }
-  
-  h1 span {
-    color: #0d6efd;
+
+  .profile-wrapper {
+    margin-top: 2rem;
   }
-  
-  .btn-primary {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.1rem;
-    border-radius: 30px;
-    transition: all 0.3s ease;
+  .pricing-card {
+    width: 90%;
   }
-  
-  .btn-primary:hover {
-    background-color: #084298;
-    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    max-width: 100%;
   }
-  
+  .pricing-card {
+    width: 90%;
+  }
+  .featured-project {
+    width: 90%;
+  }
+  .about-modern {
+    width: 90%;
+  }
+}
+
+/* ---- FEATURED PROJECT ---- */
+.featured-project {
+  position: relative;
+}
+
+.project-card {
+  position: relative;
+  max-width: 800px;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(14, 14, 152, 0.6);
+}
+
+.project-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-image {
+  transition: transform 0.8s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 5, 30, 0.1) 20%,
+    rgba(15, 5, 30, 0.8) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* Gradient Title */
+.featured-project h2 {
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 1s ease 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== SECTION TARIFS ===== */
+.pricing-section {
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* CARD STYLE */
+.pricing-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(10px);
+  padding: 2rem 1.5rem;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(155, 92, 255, 0.3);
+}
+.price {
+  font-size: 15px;
+}
+
+.price span {
+  font-weight: bold;
+  font-size: 30px;
+  background: linear-gradient(90deg, #9b5cff, #ff8dcf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ANIMATIONS */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-up-delay {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out 0.2s;
+}
+
+.fade-up-delay-2 {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out 0.4s;
+}
+
+.show-on-scroll {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* LIGHT THEME */
+body.light-theme .pricing-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}

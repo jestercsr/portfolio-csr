@@ -1,4 +1,66 @@
+/* CONTACT CTA SECTION */
+.contact-cta {
+  background: radial-gradient(circle at bottom center, #0e0e98, #06b2e6 40%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  width: 80%;
+  margin: auto;
+  border-radius: 40px;
+  z-index: 2;
+}
+
+.contact-form .form-control {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+.contact-form .form-control:focus {
+  background: rgba(255, 255, 255, 0.749);
+  border-color: white;
+  box-shadow: none;
+  color: white;
+}
+.contact-form textarea {
+  resize: none;
+}
+.contact-form .btn-glass {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  backdrop-filter: blur(8px);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.contact-form .btn-glass:hover {
+  background: white;
+  color: #0e0e98;
+}
+
+/* FOOTER SECTION */
 .footer {
-    padding: 2rem 1rem;
-    background-color: #e9ecef;
+  color: #cfcfcf;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: -60px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer img {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer {
+    text-align: center;
+    width: 90%;
+  }
+
+  .footer img {
+    margin: 0 auto 1rem;
+  }
 }

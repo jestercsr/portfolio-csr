@@ -1,29 +1,59 @@
-<section class="py-5 bg-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-4 mb-4" *ngFor="let template of templates">
-          <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
+<section class="templates-hero text-center py-5">
+  <div class="container position-relative z-1">
+    <h1 class="fw-bold gradient-text mb-3 fade-in">Mes Templates</h1>
+    <p class="projet-modern fade-in-delay">
+      Découvrez une collection de templates modernes conçus avec passion et
+      performance.
+    </p>
+  </div>
+</section>
+
+<section class="py-5 templates-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" *ngFor="let template of templates">
+        <div
+          class="template-card bg-glass rounded-4 shadow-sm h-100 d-flex flex-column fade-in-delay"
+        >
+          <div class="template-image-wrapper position-relative overflow-hidden">
             <img
               [src]="template.image[0]"
-              class="card-img-top"
+              class="w-100 template-image"
               alt="{{ template.title }}"
             />
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">{{ template.title }}</h5>
-              <p class="card-text text-muted">{{ template.description }}</p>
-              <div class="mt-auto">
-                <button class="btn btn-primary" (click)="OpenProjectModal(template)">Voir plus</button>
-              </div>
+            <div
+              class="template-overlay d-flex justify-content-center align-items-center"
+            >
+              <button
+                class="btn btn-glass"
+                (click)="OpenProjectModal(template)"
+              >
+                Voir plus
+              </button>
             </div>
-            <div class="card-footer text-muted small">
-              Tags :
-              <span class="badge me-1" *ngFor="let tag of template.tags">
-                <div class="tag me-2 mb-1" [style.background-color]="tag.color">{{ tag }}</div>
-              </span>
+          </div>
+
+          <div class="p-4 flex-grow-1 d-flex flex-column text-center">
+            <h5 class="fw-semibold gradient-text mb-2">{{ template.title }}</h5>
+            <p class="project-desc small mb-3">{{ template.description }}</p>
+            <div class="mt-auto">
+              <div
+                class="tags-container d-flex flex-wrap justify-content-center"
+              >
+                <div *ngFor="let tag of template.tags">
+                  <div
+                    class="tag me-2 mb-1"
+                    class="tag-pill"
+                    [style.borderColor]="tag.color"
+                  >
+                    {{ tag }}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>

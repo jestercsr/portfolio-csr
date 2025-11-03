@@ -1,0 +1,7 @@
+.contact-btn {
+  background: radial-gradient(circle at right, #06b2e6, #10001f 70%);
+  border-radius: 20px;
+}
+.contact-btn a:hover {
+  text-decoration: underline;
+}
