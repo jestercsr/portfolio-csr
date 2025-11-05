@@ -1,0 +1,23 @@
+<div class="card-container">
+  <div class="card">
+    <div class="card-front">
+      <div class="photo">
+        <img [src]="photoUrl" alt="Photo pro">
+      </div>
+      <div class="info">
+        <h2>{{name}}</h2>
+        <p>{{title}}</p>
+        <p>{{email}}</p>
+        <div class="skills">
+        <span *ngFor="let skill of skills">{{ skill }}</span>
+      </div>
+      </div>
+    </div>
+    <div class="card-back">
+      <div class="qr-wrapper">
+        <img [src]="qrCodeUrl" alt="QR code vers portfolio" class="qr-code">
+        <img [src]="linktreeLogoUrl" alt="Logo Linktree" class="logo-overlay">
+      </div>
+    </div>
+  </div>
+</div>

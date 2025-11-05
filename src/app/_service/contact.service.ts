@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-  private apiUrl = 'https://portfolio-csr-vb3k.onrender.com';
+  private apiUrl = '/api/contact';
 
   constructor(private http: HttpClient) {}
 
@@ -21,6 +21,6 @@ export class ContactService {
     subject: string;
     message: string;
   }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/contact`, data);
+    return this.http.post(`${this.apiUrl}/ml`, data);
   }
 }
