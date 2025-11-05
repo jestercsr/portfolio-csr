@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { NgIcon, provideIcons } from '@ng-icons/core';
+import { provideIcons } from '@ng-icons/core';
 import { bootstrapLinkedin, bootstrapGithub } from '@ng-icons/bootstrap-icons';
+import { VirtualCardComponent } from "../virtual-card/virtual-card.component";
 
 @Component({
   selector: 'app-contact',
-  imports: [NgIcon],
+  imports: [VirtualCardComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
   providers: [provideIcons({ bootstrapLinkedin, bootstrapGithub })]
