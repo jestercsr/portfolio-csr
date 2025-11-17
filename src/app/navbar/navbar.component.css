@@ -18,7 +18,7 @@
 
 /* Floating Navbar (on scroll) */
 .navbar-floating {
-  width: 90%;
+  width: 80%;
   margin: 10px auto;
   border-radius: 2rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
