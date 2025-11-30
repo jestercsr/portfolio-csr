@@ -10,7 +10,7 @@ export class TemplatesService {
     {
       id: 0,
       title: "Template d'une Agence",
-      image: ['/template/agence-screen1.png', '/template/agence-screen2.png'],
+      image: ['/template/agence-screen1.png', '/template/agence-screen2.png', '/template/agence-screen3.png'],
       description:
         "Création d'un template d'un site web pour une agence. Projet realisé sur Next.js.",
       github: 'https://github.com/jestercsr/template-agence',
@@ -38,6 +38,8 @@ export class TemplatesService {
         '/template/portfolio-template1.png',
         '/template/portfolio-template2.png',
         '/template/portfolio-template3.png',
+        '/template/portfolio-template4.png',
+        '/template/portfolio-template5.png',
       ],
       description:
         "Création d'un template d'un site web pour montrer ces projets et ces connaissances. Projet realisé sur Next.js.",
@@ -79,6 +81,7 @@ export class TemplatesService {
       image: [
         '/template/evenementiel-screen1.png',
         '/template/evenementiel-screen2.png',
+        '/template/evenementiel-screen3.png',
       ],
       description:
         "Création d'un template d'un site web pour un site d'évènementiel. Projet realisé sur Next.js.",
@@ -103,7 +106,7 @@ export class TemplatesService {
     {
       id: 7,
       title: "Template d'un SaaS",
-      image: ['/template/saas-screen1.png', '/template/saas-screen2.png'],
+      image: ['/template/saas-screen1.png', '/template/saas-screen2.png', '/template/saas-screen3.png', '/template/saas-screen4.png'],
       description:
         "Création d'un template d'un site web pour un SaaS. Projet realisé sur Next.js.",
       github: 'https://github.com/jestercsr/template-saas',
@@ -117,6 +120,7 @@ export class TemplatesService {
         '/template/clinique-screen1.png',
         '/template/clinique-screen2.png',
         '/template/clinique-screen3.png',
+        '/template/clinique-screen4.png',
       ],
       description:
         "Création d'un template d'un site web pour une clinique de santé. Projet realisé sur Next.js.",
@@ -131,6 +135,7 @@ export class TemplatesService {
         '/template/streaming-screen1.png',
         '/template/streaming-screen2.png',
         '/template/streaming-screen3.png',
+        '/template/streaming-screen4.png',
       ],
       description:
         "Création d'un template d'un site web pour un site de streaming. Projet realisé sur Next.js.",
