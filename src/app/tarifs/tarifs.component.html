@@ -59,10 +59,10 @@
             <div>
               <h4 class="fw-bold mb-3">{{ item.type }}</h4>
               <p class="fs-4 fw-bold mb-3 gradient-text" *ngIf="item.prix">
-                {{ item.prix }}
+                {{ item.detail }}
               </p>
             </div>
-            <button class="btn btn-tarif rounded-pill px-4">
+            <button class="btn btn-tarif rounded-pill px-4" (click)="openInvoiceModal(item)">
               Obtenir un devis
             </button>
           </div>

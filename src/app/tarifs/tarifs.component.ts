@@ -1,9 +1,11 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { NgbModal, NgbModalModule, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { InvoiceModalComponent } from '../invoice-modal/invoice-modal.component';
 
 @Component({
   selector: 'app-tarifs',
-  imports: [NgClass, NgFor, NgIf],
+  imports: [NgClass, NgFor, NgIf, NgbModalModule],
   templateUrl: './tarifs.component.html',
   styleUrl: './tarifs.component.css',
 })
@@ -56,16 +58,38 @@ export class TarifsComponent {
   ];
 
   tarifs = [
-    { type: 'Site vitrine', prix: '180 € /j + 30 € (administration)' },
-    { type: 'Site e-commerce', prix: '250 € /j + 30 € (administration)' },
-    { type: 'Site no-code', prix: '500 €' },
-    { type: 'Refonte', prix: '400 € - 1000 €' },
-    { type: 'Maintenance - Pack 5 tickets', prix: '100 €' },
-    { type: 'Maintenance - Pack 10 tickets', prix: '180 €' },
-    { type: 'Maintenance - Ticket unique', prix: 'à partir de 30 €' },
-    { type: 'Application web', prix: '400 € /j + 30 € (administration)' },
-    { type: 'NovaERP (logiciel de gestion)', prix: 'à partir de 2600 €' },
+    { type: 'Site vitrine', prix: '180', detail: '180 € /j + 30 € (administration)' },
+    { type: 'Site e-commerce', prix: '250', detail: '250 € /j + 30 € (administration)' },
+    { type: 'Site no-code', prix: '500', detail: '500 €' },
+    { type: 'Refonte', prix: '800', detail: '400 € - 1000 €' },
+    { type: 'Maintenance - Pack 5 tickets', prix: '100', detail: '100 €' },
+    { type: 'Maintenance - Pack 10 tickets', prix: '180', detail: '180 €' },
+    { type: 'Maintenance - Ticket unique', prix: '30', detail: 'à partir de 30 €' },
+    { type: 'Application web', prix: '400', detail: '400 € /j + 30 € (administration)' },
+    { type: 'NovaERP (logiciel de gestion)', prix: '2600', detail: 'à partir de 2600 €' },
   ];
+
+  constructor(private modalService: NgbModal) {}
+
+  openInvoiceModal(item: any) {
+    const modalOptions: NgbModalOptions = {
+      size: 'xl',
+      backdrop: 'static',
+      keyboard: true,
+      centered: true
+    }
+
+    const modalRef = this.modalService.open(InvoiceModalComponent, modalOptions);
+    modalRef.componentInstance.offer = item;
+    modalRef.componentInstance.provider = {
+      company: 'Jester CESAR',
+      addressLine1: '1O rue de Varennes',
+      addressLine2: '95190 GOUSSAINVILLE',
+      phone: '06 04 52 32 70',
+      siret: '992 596 338 00010',
+      email: 'jester.csr@gmail.com',
+    };
+  }
 
   getAnimation(index: number) {
     const animations = [

@@ -44,17 +44,17 @@ html {
   text-decoration: underline;
 }
 
-/* 🌞 LIGHT THEME */
+/* LIGHT THEME */
 body.light-theme {
   background: #ffffff;
   color: #1a1a1a;
 }
 body.light-theme .hero-section {
-  background: radial-gradient(circle at top center, #0e0e98, #ffffff 40%);
+  background: radial-gradient(circle at top center, #0e0e98, #ffffff 20%);
   color: #1a1a1a;
 }
 body.light-theme .gradient-text {
-  background: linear-gradient(90deg,#0e0e98, #06b2e6);
+  background: linear-gradient(90deg, #0e0e98, #06b2e6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -149,8 +149,11 @@ body.light-theme .bg-legales a {
 body.light-theme #hebergement a {
   color: #333;
 }
+body.light-theme .facture {
+  background: #edecec;
+}
 
-/* 🌙 DARK THEME */
+/* DARK THEME */
 body.dark-theme {
   background: radial-gradient(circle at top center, #10001f, #0f051e 80%);
   color: #f8f9fa;
@@ -164,7 +167,7 @@ body.dark-theme .gradient-text {
   -webkit-text-fill-color: transparent;
 }
 body.dark-theme .contact-text {
-  background: linear-gradient(90deg,#0e0e98, #06b2e6);
+  background: linear-gradient(90deg, #0e0e98, #06b2e6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -219,7 +222,7 @@ body.dark-theme .tag-pill {
   color: #fff;
 }
 body.dark-theme .tag-pill:hover {
-  color: #0e0e98;
+  color: #06b2e6;
 }
 body.dark-theme .modern-modal {
   color: var(--text-dark);
@@ -243,6 +246,10 @@ body.dark-theme .bg-legales a {
   color: white;
 }
 body.dark-theme #hebergement a {
+  color: white;
+}
+body.dark-theme .facture {
+  background: #1d132e;
   color: white;
 }
 

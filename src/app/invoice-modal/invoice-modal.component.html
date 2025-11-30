@@ -1,0 +1,154 @@
+<div class="modern-modal p-3">
+  <div class="modal-header border-0">
+    <h5 class="modal-title fw-bold gradient-text">Obtenir un devis — {{ offer?.type }}</h5>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="close()"
+    ></button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row gy-3">
+      <!-- Colonne d'édition -->
+      <div class="col-md-5">
+        <h6 class="fw-bold">Informations client</h6>
+        <div class="mb-2">
+          <label class="form-label small">Nom</label>
+          <input
+            class="form-control"
+            [(ngModel)]="client.name"
+            placeholder="Nom du client"
+          />
+        </div>
+        <div class="mb-2">
+          <label class="form-label small">Email</label>
+          <input
+            class="form-control"
+            [(ngModel)]="client.email"
+            placeholder="email@exemple.com"
+          />
+        </div>
+        <div class="mb-2">
+          <label class="form-label small">Adresse</label>
+          <input
+            class="form-control"
+            [(ngModel)]="client.address"
+            placeholder="Adresse"
+          />
+        </div>
+
+        <h6 class="fw-bold mt-3">Message / précisions</h6>
+        <textarea
+          class="form-control"
+          rows="6"
+          [(ngModel)]="message"
+        ></textarea>
+
+        <div class="d-flex gap-2 mt-3">
+          <button class="btn btn-glass" (click)="downloadPDF()">
+            Télécharger PDF
+          </button>
+          <button class="btn btn-outline-secondary" (click)="close()">
+            Fermer
+          </button>
+        </div>
+      </div>
+
+      <!-- Colonne aperçu facture (prête à l'impression) -->
+      <div class="col-md-7">
+        <div
+          id="invoice-preview"
+          class="invoice-preview border p-4 rounded shadow-sm"
+        >
+          <!-- Header -->
+          <div class="row">
+            <div class="col-7">
+              <h3 class="fw-bold mb-1">{{ provider.company }}</h3>
+              <div class="projet-modern small">{{ provider.addressLine1 }}</div>
+              <div class="projet-modern small">{{ provider.addressLine2 }}</div>
+              <div class="projet-modern small">SIRET : {{ provider.siret }}</div>
+            </div>
+
+            <div class="col-5 text-end">
+              <div class="small">Email : {{ provider.email }}</div>
+              <div class="small">Tel : {{ provider.phone }}</div>
+              <div class="small">Date : {{ today | date : "dd/MM/yyyy" }}</div>
+            </div>
+          </div>
+
+          <hr class="my-3" />
+
+          <!-- Bill to -->
+          <div class="mb-3">
+            <h5 class="fw-semibold">Facturé à :</h5>
+            <div>{{ client.name || "—" }}</div>
+            <div class="projet-modern small">{{ client.address }}</div>
+            <div class="projet-modern small">{{ client.email }}</div>
+          </div>
+
+          <!-- Invoice number -->
+          <div
+            class="d-flex justify-content-between py-2 facture rounded px-3 mb-3"
+          >
+            <span class="fw-semibold">N° de facture</span>
+            <span class="fw-bold">{{ invoiceNumber }}</span>
+          </div>
+
+          <!-- Services -->
+          <table class="table align-middle mt-3">
+            <thead class="facture">
+              <tr>
+                <th>Service</th>
+                <th class="text-end">Prix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="fw-bold">{{ offer?.type }}</div>
+                  <small class="projet-modern d-block">
+                    {{ offer?.details?.slice(0, 5).join(", ") }}
+                  </small>
+                </td>
+                <td class="text-end fw-semibold">{{ offer?.prix }} €</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Totals -->
+          <div class="d-flex justify-content-end mt-3">
+            <table class="table table-sm w-50">
+              <tbody>
+                <tr>
+                  <td class="text-end">Sous-total :</td>
+                  <td class="text-end">{{ subtotal }} €</td>
+                </tr>
+                <tr>
+                  <td class="text-end">TVA ({{ tva }}%) :</td>
+                  <td class="text-end">
+                    {{ (subtotal * tva) / 100 | number : "1.2-2" }} €
+                  </td>
+                </tr>
+                <tr class="fw-bold border-top">
+                  <td class="text-end">Total TTC :</td>
+                  <td class="text-end fs-5">
+                    {{ total | number : "1.2-2" }} €
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <hr />
+
+          <!-- Notes -->
+          <div class="small projet-modern">
+            <strong>Notes :</strong>
+            <div>{{ message }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
