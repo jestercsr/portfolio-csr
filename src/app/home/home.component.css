@@ -55,18 +55,14 @@
 
 /* Effet de splash au sol (optionnel) */
 .raindrop::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
   width: 8px;
   height: 2px;
-  background: radial-gradient(
-    circle,
-    rgba(155, 92, 255, 0.4),
-    transparent
-  );
+  background: radial-gradient(circle, rgba(155, 92, 255, 0.4), transparent);
   border-radius: 50%;
   opacity: 0;
   animation: splash 0.3s ease-out;
@@ -176,11 +172,11 @@
   .about-modern {
     width: 90%;
   }
-  
+
   .raindrop:nth-child(2n) {
     display: none;
   }
-  
+
   .raindrop {
     height: 60px;
   }

@@ -80,11 +80,11 @@ export class InvoiceModalComponent implements OnInit {
   }
 
   printPDF() {
-  const printContents = document.getElementById('invoice-preview')!.innerHTML;
+    const printContents = document.getElementById('invoice-preview')!.innerHTML;
 
-  const popup = window.open('', '_blank', 'width=900,height=1000');
-  popup!.document.open();
-  popup!.document.write(`
+    const popup = window.open('', '_blank', 'width=900,height=1000');
+    popup!.document.open();
+    popup!.document.write(`
     <html>
       <head>
         <title>Facture</title>
@@ -125,9 +125,9 @@ export class InvoiceModalComponent implements OnInit {
       </body>
     </html>
   `);
-  popup!.document.close();
-  popup!.print();
-}
+    popup!.document.close();
+    popup!.print();
+  }
 
   async downloadPDF() {
     const pdfDoc = await PDFDocument.create();
@@ -135,119 +135,141 @@ export class InvoiceModalComponent implements OnInit {
 
     const width = page.getWidth();
 
-  const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-  const bold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const bold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-  // HEADER BAR
-  page.drawRectangle({
-    x: 0,
-    y: 800,
-    width: width,
-    height: 50,
-    color: rgb(0.05, 0.05, 0.05),
-  });
+    // HEADER BAR
+    page.drawRectangle({
+      x: 0,
+      y: 800,
+      width: width,
+      height: 50,
+      color: rgb(0.05, 0.05, 0.05),
+    });
 
-  page.drawText('Facture', {
-    x: 40,
-    y: 815,
-    size: 22,
-    font: bold,
-    color: rgb(1, 1, 1),
-  });
+    page.drawText('Facture', {
+      x: 40,
+      y: 815,
+      size: 22,
+      font: bold,
+      color: rgb(1, 1, 1),
+    });
 
-  page.drawText(this.invoiceNumber, {
-    x: width - 160,
-    y: 815,
-    size: 12,
-    font,
-    color: rgb(1, 1, 1),
-  });
+    page.drawText(this.invoiceNumber, {
+      x: width - 160,
+      y: 815,
+      size: 12,
+      font,
+      color: rgb(1, 1, 1),
+    });
 
-  // PROVIDER BLOCK (Odoo style)
-  page.drawText(this.provider.company, {
-    x: 40,
-    y: 750,
-    size: 14,
-    font: bold,
-  });
+    // PROVIDER BLOCK (Odoo style)
+    page.drawText(this.provider.company, {
+      x: 40,
+      y: 750,
+      size: 14,
+      font: bold,
+    });
 
-  page.drawText(`${this.provider.addressLine1}`, { x: 40, y: 730, size: 11, font });
-  page.drawText(`${this.provider.addressLine2}`, { x: 40, y: 715, size: 11, font });
-  page.drawText(`${this.provider.phone}`, { x: 40, y: 700, size: 11, font });
-  page.drawText(`${this.provider.email}`, { x: 40, y: 685, size: 11, font });
+    page.drawText(`${this.provider.addressLine1}`, {
+      x: 40,
+      y: 730,
+      size: 11,
+      font,
+    });
+    page.drawText(`${this.provider.addressLine2}`, {
+      x: 40,
+      y: 715,
+      size: 11,
+      font,
+    });
+    page.drawText(`${this.provider.phone}`, { x: 40, y: 700, size: 11, font });
+    page.drawText(`${this.provider.email}`, { x: 40, y: 685, size: 11, font });
 
-  // CLIENT SECTION (Stripe style card)
-  page.drawRectangle({
-    x: 300,
-    y: 690,
-    width: 250,
-    height: 90,
-    borderColor: rgb(0.6, 0.6, 0.6),
-    borderWidth: 1.2,
-  });
+    // CLIENT SECTION (Stripe style card)
+    page.drawRectangle({
+      x: 300,
+      y: 690,
+      width: 250,
+      height: 90,
+      borderColor: rgb(0.6, 0.6, 0.6),
+      borderWidth: 1.2,
+    });
 
-  page.drawText('Facturé à', {
-    x: 315,
-    y: 760,
-    size: 13,
-    font: bold,
-  });
+    page.drawText('Facturé à', {
+      x: 315,
+      y: 760,
+      size: 13,
+      font: bold,
+    });
 
-  page.drawText(`${this.client.name}`, { x: 315, y: 740, size: 11, font });
-  page.drawText(`${this.client.address}`, { x: 315, y: 725, size: 11, font });
-  page.drawText(`${this.client.email}`, { x: 315, y: 710, size: 11, font });
+    page.drawText(`${this.client.name}`, { x: 315, y: 740, size: 11, font });
+    page.drawText(`${this.client.address}`, { x: 315, y: 725, size: 11, font });
+    page.drawText(`${this.client.email}`, { x: 315, y: 710, size: 11, font });
 
-  /// TABLE HEADER
-  page.drawRectangle({
-    x: 40,
-    y: 620,
-    width: 515,
-    height: 30,
-    color: rgb(0.95, 0.95, 0.95),
-  });
+    /// TABLE HEADER
+    page.drawRectangle({
+      x: 40,
+      y: 620,
+      width: 515,
+      height: 30,
+      color: rgb(0.95, 0.95, 0.95),
+    });
 
-  const headerY = 630;
+    const headerY = 630;
 
-  page.drawText('Service', { x: 50, y: headerY, size: 12, font: bold });
-  page.drawText('Prix', { x: 500, y: headerY, size: 12, font: bold });
+    page.drawText('Service', { x: 50, y: headerY, size: 12, font: bold });
+    page.drawText('Prix', { x: 500, y: headerY, size: 12, font: bold });
 
-  // LINE
-  page.drawText(this.offer.type, { x: 50, y: 600, size: 12, font });
-  page.drawText(this.offer.prix + ' €', { x: 500, y: 600, size: 12, font });
+    // LINE
+    page.drawText(this.offer.type, { x: 50, y: 600, size: 12, font });
+    page.drawText(this.offer.prix + ' €', { x: 500, y: 600, size: 12, font });
 
-  // TOTAL STRIPE STYLE
-  page.drawText('Sous-total:', { x: 400, y: 520, size: 12, font });
-  page.drawText(this.subtotal.toFixed(2) + '€', { x: 500, y: 520, size: 12, font });
+    // TOTAL STRIPE STYLE
+    page.drawText('Sous-total:', { x: 400, y: 520, size: 12, font });
+    page.drawText(this.subtotal.toFixed(2) + '€', {
+      x: 500,
+      y: 520,
+      size: 12,
+      font,
+    });
 
-  page.drawText('TVA (' + this.tva + '%):', { x: 400, y: 500, size: 12, font });
-  page.drawText(((this.subtotal * this.tva) / 100).toFixed(2) + '€', {
-    x: 500,
-    y: 500,
-    size: 12,
-    font,
-  });
+    page.drawText('TVA (' + this.tva + '%):', {
+      x: 400,
+      y: 500,
+      size: 12,
+      font,
+    });
+    page.drawText(((this.subtotal * this.tva) / 100).toFixed(2) + '€', {
+      x: 500,
+      y: 500,
+      size: 12,
+      font,
+    });
 
-  page.drawText('TOTAL', {
-    x: 400,
-    y: 470,
-    size: 14,
-    font: bold,
-  });
+    page.drawText('TOTAL', {
+      x: 400,
+      y: 470,
+      size: 14,
+      font: bold,
+    });
 
-  page.drawText(this.total.toFixed(2) + ' €', {
-    x: 500,
-    y: 470,
-    size: 14,
-    font: bold,
-    color: rgb(0.15, 0.15, 0.15),
-  });
+    page.drawText(this.total.toFixed(2) + ' €', {
+      x: 500,
+      y: 470,
+      size: 14,
+      font: bold,
+      color: rgb(0.15, 0.15, 0.15),
+    });
 
-  const pdfBytes = await pdfDoc.save();
-  const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
+    const pdfBytes = await pdfDoc.save();
+    const blob = new Blob([new Uint8Array(pdfBytes)], {
+      type: 'application/pdf',
+    });
 
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = this.invoiceNumber + '.pdf';
-  link.click();
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = this.invoiceNumber + '.pdf';
+    link.click();
   }
 }

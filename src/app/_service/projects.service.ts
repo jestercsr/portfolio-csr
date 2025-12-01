@@ -15,9 +15,9 @@ export class ProjectsService {
       description:
         'Programmation d’une version simplifiée du jeu du champs de mines. Projet realisé en Java.',
       image: [
-        '/projet/mine-screen1.png',
-        '/projet/mine-screen2.png',
-        '/projet/mine-screen3.png',
+        '/projet/mine-screen1.webp',
+        '/projet/mine-screen2.webp',
+        '/projet/mine-screen3.webp',
       ],
       tags: [Tag.JAVA],
       projectLink: 'https://github.com/jestercsr/Champsdemine',
@@ -32,9 +32,9 @@ export class ProjectsService {
       description:
         "Programmation d’un site web avec une base de données qui permet d'accèder à une wiki des séries du Arrowverse. Projet réalisé avec React.",
       image: [
-        '/projet/arrow-screen1.png',
-        '/projet/arrow-screen2.png',
-        '/projet/arrow-screen3.png',
+        '/projet/arrow-screen1.webp',
+        '/projet/arrow-screen2.webp',
+        '/projet/arrow-screen3.webp',
       ],
       tags: [Tag.REACT, Tag.TAILWINDCSS],
       projectLink: '',
@@ -49,9 +49,9 @@ export class ProjectsService {
       description:
         'Programmation d’un jeu qui permet de retirer des briques et obtenir un score total en fonction des combinaisons faites par l’utilisateur. Projet réalisé en Java.',
       image: [
-        '/projet/damier-screen1.png',
-        '/projet/damier-screen2.png',
-        '/projet/damier-screen3.png',
+        '/projet/damier-screen1.webp',
+        '/projet/damier-screen2.webp',
+        '/projet/damier-screen3.webp',
       ],
       tags: [Tag.JAVA],
       projectLink: 'https://github.com/jestercsr/JeuduDamiers',
@@ -78,7 +78,10 @@ export class ProjectsService {
         "Exercice de création d'un site de vente de produits lors de la formation de Concepteur Développeur d'Applications.",
       description:
         "Développement d'une application web de vente de produits en ligne. Projet realise sur React et Spring Boot.",
-      image: ['/projet/ecommerce-screen1.png', '/projet/ecommerce-screen2.png'],
+      image: [
+        '/projet/ecommerce-screen1.webp',
+        '/projet/ecommerce-screen2.webp',
+      ],
       tags: [Tag.REACT, Tag.SPRING, Tag.JAVASCRIPT],
       projectLink: 'https://github.com/jestercsr/ecommerce',
       where: 'Github',
@@ -92,9 +95,9 @@ export class ProjectsService {
       description:
         'Développement d’une application web d’un service de streaming afin de regarder des films, séries et lectures en ligne d’animés, une plateforme de vente, gestion d’utilisateurs et des postes d’utilisateurs. Projet réalisé sur Next.js avec 2 bases de données SQL et NoSQL.',
       image: [
-        '/projet/animeOne-screen1.png',
-        '/projet/animeOne-screen2.png',
-        '/projet/animeOne-screen3.png',
+        '/projet/animeOne-screen1.webp',
+        '/projet/animeOne-screen2.webp',
+        '/projet/animeOne-screen3.webp',
       ],
       tags: [Tag.NEXTJS, Tag.REACT, Tag.NODEJS, Tag.TAILWINDCSS],
       projectLink: 'https://anime-one-project.vercel.app',
@@ -107,7 +110,7 @@ export class ProjectsService {
       sommaire: "Création du site web de l'association Saint-Raphaël.",
       description:
         "Développement d'un site web pour l'association Saint-Raphaël pour faciliter leur gestion des dons, de bénéficiaires et de membres. Projet réalisé sur Next.js.",
-      image: ['/projet/raphael-screen1.png', '/projet/raphael-screen2.png'],
+      image: ['/projet/raphael-screen1.webp', '/projet/raphael-screen2.webp'],
       tags: [Tag.NEXTJS, Tag.REACT, Tag.NODEJS, Tag.TAILWINDCSS],
       projectLink: '',
       where: 'En cours',
@@ -121,9 +124,9 @@ export class ProjectsService {
       description:
         "Développement d'un site web pour montrer mes projets et mes connaissances. Projet réalisé sur Angular.",
       image: [
-        '/projet/portfolio-screen1.png',
-        '/projet/portfolio-screen2.png',
-        '/projet/portfolio-screen3.png',
+        '/projet/portfolio-screen1.webp',
+        '/projet/portfolio-screen2.webp',
+        '/projet/portfolio-screen3.webp',
       ],
       tags: [Tag.ANGULAR, Tag.TYPESCRIPT, Tag.BOOTSTRAP],
       projectLink: 'https://portfolio-jester-cesar.vercel.app',
@@ -137,10 +140,10 @@ export class ProjectsService {
       description:
         "Développement d'une application web qui permet « de gérer l'ensemble des processus d'une entreprise en intégrant l'ensemble de ses fonctions, dont la gestion des ressources humaines, la gestion comptable et financière, l'aide à la décision, mais aussi la vente, la distribution, l'approvisionnement et le commerce électronique ». Projet réalisé sur Next.js.",
       image: [
-        '/projet/erp-screen1.png',
-        '/projet/erp-screen2.png',
-        '/projet/erp-screen3.png',
-        '/projet/erp-screen4.png',
+        '/projet/erp-screen1.webp',
+        '/projet/erp-screen2.webp',
+        '/projet/erp-screen3.webp',
+        '/projet/erp-screen4.webp',
       ],
       tags: [Tag.NEXTJS, Tag.TYPESCRIPT, Tag.TAILWINDCSS],
       projectLink: '',

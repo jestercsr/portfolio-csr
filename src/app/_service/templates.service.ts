@@ -10,7 +10,11 @@ export class TemplatesService {
     {
       id: 0,
       title: "Template d'une Agence",
-      image: ['/template/agence-screen1.png', '/template/agence-screen2.png', '/template/agence-screen3.png'],
+      image: [
+        '/template/agence-screen1.webp',
+        '/template/agence-screen2.webp',
+        '/template/agence-screen3.webp',
+      ],
       description:
         "Création d'un template d'un site web pour une agence. Projet realisé sur Next.js.",
       github: 'https://github.com/jestercsr/template-agence',
@@ -21,9 +25,9 @@ export class TemplatesService {
       id: 1,
       title: "Template d'un Blog",
       image: [
-        '/template/blog-screen1.png',
-        '/template/blog-screen2.png',
-        '/template/blog-screen3.png',
+        '/template/blog-screen1.webp',
+        '/template/blog-screen2.webp',
+        '/template/blog-screen3.webp',
       ],
       description:
         "Création d'un template d'un site web pour un blog. Projet realisé sur Next.js.",
@@ -35,11 +39,11 @@ export class TemplatesService {
       id: 2,
       title: "Template d'un Portfolio",
       image: [
-        '/template/portfolio-template1.png',
-        '/template/portfolio-template2.png',
-        '/template/portfolio-template3.png',
-        '/template/portfolio-template4.png',
-        '/template/portfolio-template5.png',
+        '/template/portfolio-template1.webp',
+        '/template/portfolio-template2.webp',
+        '/template/portfolio-template3.webp',
+        '/template/portfolio-template4.webp',
+        '/template/portfolio-template5.webp',
       ],
       description:
         "Création d'un template d'un site web pour montrer ces projets et ces connaissances. Projet realisé sur Next.js.",
@@ -51,9 +55,9 @@ export class TemplatesService {
       id: 3,
       title: "Template d'une boutique E-commerce",
       image: [
-        '/template/boutique-screen1.png',
-        '/template/boutique-screen2.png',
-        '/template/boutique-screen3.png',
+        '/template/boutique-screen1.webp',
+        '/template/boutique-screen2.webp',
+        '/template/boutique-screen3.webp',
       ],
       description:
         "Création d'un template d'un site web pour une boutique E-commerce. Projet realisé sur Next.js.",
@@ -65,9 +69,9 @@ export class TemplatesService {
       id: 4,
       title: "Template d'une école en ligne",
       image: [
-        '/template/ecole-screen1.png',
-        '/template/ecole-screen2.png',
-        '/template/ecole-screen3.png',
+        '/template/ecole-screen1.webp',
+        '/template/ecole-screen2.webp',
+        '/template/ecole-screen3.webp',
       ],
       description:
         "Création d'un template d'un site web pour une école en ligne. Projet realisé sur Next.js.",
@@ -79,9 +83,9 @@ export class TemplatesService {
       id: 5,
       title: "Template d'un site d'évènementiel",
       image: [
-        '/template/evenementiel-screen1.png',
-        '/template/evenementiel-screen2.png',
-        '/template/evenementiel-screen3.png',
+        '/template/evenementiel-screen1.webp',
+        '/template/evenementiel-screen2.webp',
+        '/template/evenementiel-screen3.webp',
       ],
       description:
         "Création d'un template d'un site web pour un site d'évènementiel. Projet realisé sur Next.js.",
@@ -93,9 +97,9 @@ export class TemplatesService {
       id: 6,
       title: "Template d'un média",
       image: [
-        '/template/media-screen1.png',
-        '/template/media-screen2.png',
-        '/template/media-screen3.png',
+        '/template/media-screen1.webp',
+        '/template/media-screen2.webp',
+        '/template/media-screen3.webp',
       ],
       description:
         "Création d'un template d'un site web pour un média. Projet realisé sur Next.js.",
@@ -106,7 +110,12 @@ export class TemplatesService {
     {
       id: 7,
       title: "Template d'un SaaS",
-      image: ['/template/saas-screen1.png', '/template/saas-screen2.png', '/template/saas-screen3.png', '/template/saas-screen4.png'],
+      image: [
+        '/template/saas-screen1.webp',
+        '/template/saas-screen2.webp',
+        '/template/saas-screen3.webp',
+        '/template/saas-screen4.webp',
+      ],
       description:
         "Création d'un template d'un site web pour un SaaS. Projet realisé sur Next.js.",
       github: 'https://github.com/jestercsr/template-saas',
@@ -117,10 +126,10 @@ export class TemplatesService {
       id: 8,
       title: "Template d'une clinique de santé",
       image: [
-        '/template/clinique-screen1.png',
-        '/template/clinique-screen2.png',
-        '/template/clinique-screen3.png',
-        '/template/clinique-screen4.png',
+        '/template/clinique-screen1.webp',
+        '/template/clinique-screen2.webp',
+        '/template/clinique-screen3.webp',
+        '/template/clinique-screen4.webp',
       ],
       description:
         "Création d'un template d'un site web pour une clinique de santé. Projet realisé sur Next.js.",
@@ -132,10 +141,10 @@ export class TemplatesService {
       id: 9,
       title: "Template d'un site de streaming",
       image: [
-        '/template/streaming-screen1.png',
-        '/template/streaming-screen2.png',
-        '/template/streaming-screen3.png',
-        '/template/streaming-screen4.png',
+        '/template/streaming-screen1.webp',
+        '/template/streaming-screen2.webp',
+        '/template/streaming-screen3.webp',
+        '/template/streaming-screen4.webp',
       ],
       description:
         "Création d'un template d'un site web pour un site de streaming. Projet realisé sur Next.js.",
