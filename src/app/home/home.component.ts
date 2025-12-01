@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   featuredProjects = {} as Project;
   private raindrops: HTMLElement[] = [];
   private animationFrameId: number | null = null;
+  private observer!: IntersectionObserver;
 
   constructor(
     private titleService: Title,
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    const observer = new IntersectionObserver(
+    this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -54,7 +55,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.el.nativeElement
       .querySelectorAll('.fade-up, .fade-up-delay, .fade-up-delay-2')
-      .forEach((el: HTMLElement) => observer.observe(el));
+      .forEach((el: HTMLElement) => this.observer.observe(el));
 
     this.initRainAnimation();
   }
@@ -64,6 +65,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       cancelAnimationFrame(this.animationFrameId);
     }
     this.raindrops.forEach(drop => drop.remove());
+    const rain = this.el.nativeElement.querySelector('.rain-container');
+    if (rain) rain.remove();
+    if (this.observer) this.observer.disconnect();
   }
 
   private initRainAnimation(): void {
