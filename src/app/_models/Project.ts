@@ -10,4 +10,6 @@ export interface Project {
     projectLink: string;
     where: string;
     titre: string;
+    type?: 'standard' | 'game';
+    gameUrl?: string;
 }
