@@ -328,3 +328,7 @@ body.light-theme .raindrop {
     rgba(155, 92, 255, 0.2)
   );
 }
+
+.form-floating ~ label {
+  /* Règle corrigée - remplace le sélecteur cassé */
+}

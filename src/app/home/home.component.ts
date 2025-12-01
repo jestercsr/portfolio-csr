@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private raindrops: HTMLElement[] = [];
   private animationFrameId: number | null = null;
   private observer!: IntersectionObserver;
+  private isVisible = true;
 
   constructor(
     private titleService: Title,
@@ -39,6 +40,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.featuredProjects = this.projectsService.GetLastProject();
+    
+    // Arrêter l'animation quand on quitte la page
+    window.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
 
   ngAfterViewInit(): void {
@@ -61,10 +65,29 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.stopRainAnimation();
+    window.removeEventListener('visibilitychange', this.handleVisibilityChange);
+  }
+
+  private handleVisibilityChange = () => {
+    this.isVisible = !document.hidden;
+    if (!this.isVisible) {
+      this.stopRainAnimation();
+    } else {
+      const heroSection = this.el.nativeElement.querySelector('.hero-section');
+      if (heroSection) {
+        this.initRainAnimation();
+      }
+    }
+  };
+
+  private stopRainAnimation(): void {
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
     }
     this.raindrops.forEach(drop => drop.remove());
+    this.raindrops = [];
     const rain = this.el.nativeElement.querySelector('.rain-container');
     if (rain) rain.remove();
     if (this.observer) this.observer.disconnect();
@@ -72,7 +95,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private initRainAnimation(): void {
     const heroSection = this.el.nativeElement.querySelector('.hero-section');
-    if (!heroSection) return;
+    if (!heroSection || !this.isVisible) return;
 
     const rainContainer = this.renderer.createElement('div');
     this.renderer.addClass(rainContainer, 'rain-container');
@@ -107,9 +130,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private animateRain(container: HTMLElement): void {
+    if (!this.isVisible) return;
+
     let lastTime = Date.now();
     
     const animate = () => {
+      if (!this.isVisible) return;
+
       const currentTime = Date.now();
       const elapsed = currentTime - lastTime;
 
@@ -119,7 +146,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
         if (this.raindrops.length > 100) {
           const oldDrop = this.raindrops.shift();
-          if (oldDrop) {
+          if (oldDrop && oldDrop.parentNode) {
             this.renderer.removeChild(container, oldDrop);
           }
         }
