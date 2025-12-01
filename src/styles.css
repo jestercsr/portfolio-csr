@@ -252,6 +252,10 @@ body.dark-theme .facture {
   background: #1d132e;
   color: white;
 }
+body.dark-theme .table-invoice thead tr {
+  background: #1d132e;
+  border-bottom: 1px solid #ddd;
+}
 
 /* BUTTON */
 .btn-glass {

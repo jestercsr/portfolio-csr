@@ -12,7 +12,10 @@
     <div class="row gy-3">
       <!-- Colonne d'édition -->
       <div class="col-md-5">
-        <h6 class="fw-bold">Informations client</h6>
+        <div class="d-flex justify-content-between align-middle">
+            <h6 class="fw-bold">Informations client</h6>
+            <div (click)="printPDF()"><ng-icon name="bootstrapPrinterFill" /></div>
+        </div>
         <div class="mb-2">
           <label class="form-label small">Nom</label>
           <input
@@ -96,8 +99,8 @@
           </div>
 
           <!-- Services -->
-          <table class="table align-middle mt-3">
-            <thead class="facture">
+          <table class="table-invoice align-middle mt-3">
+            <thead>
               <tr>
                 <th>Service</th>
                 <th class="text-end">Prix</th>
@@ -118,7 +121,7 @@
 
           <!-- Totals -->
           <div class="d-flex justify-content-end mt-3">
-            <table class="table table-sm w-50">
+            <table class="table-invoice table-sm w-50">
               <tbody>
                 <tr>
                   <td class="text-end">Sous-total :</td>
