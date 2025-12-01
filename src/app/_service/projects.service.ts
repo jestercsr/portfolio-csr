@@ -23,6 +23,7 @@ export class ProjectsService {
       projectLink: 'https://github.com/jestercsr/Champsdemine',
       where: 'Github',
       titre: 'Champs de mine - 2020',
+      type: 'standard',
     },
     {
       id: 1,
@@ -40,6 +41,7 @@ export class ProjectsService {
       projectLink: '',
       where: 'Github',
       titre: 'Arrow le site fan - 2021',
+      type: 'standard',
     },
     {
       id: 2,
@@ -57,6 +59,7 @@ export class ProjectsService {
       projectLink: 'https://github.com/jestercsr/JeuduDamiers',
       where: 'Github',
       titre: 'Jeu du Damier - 2021',
+      type: 'standard',
     },
     {
       id: 3,
@@ -70,6 +73,7 @@ export class ProjectsService {
       projectLink: 'https://github.com/jestercsr/ProjetAutoecole',
       where: 'Github',
       titre: 'Logiciel de gestion Auto Ecole - 2022',
+      type: 'standard',
     },
     {
       id: 4,
@@ -86,6 +90,7 @@ export class ProjectsService {
       projectLink: 'https://github.com/jestercsr/ecommerce',
       where: 'Github',
       titre: 'E-commerce - 2024',
+      type: 'standard',
     },
     {
       id: 5,
@@ -103,6 +108,7 @@ export class ProjectsService {
       projectLink: 'https://anime-one-project.vercel.app',
       where: 'Vercel',
       titre: 'Service de streaming AnimeONE - 2024',
+      type: 'standard',
     },
     {
       id: 6,
@@ -115,6 +121,7 @@ export class ProjectsService {
       projectLink: '',
       where: 'En cours',
       titre: "Site de l'association Saint-Raphaël - 2024 / 2025",
+      type: 'standard',
     },
     {
       id: 7,
@@ -132,9 +139,61 @@ export class ProjectsService {
       projectLink: 'https://portfolio-jester-cesar.vercel.app',
       where: 'Vercel',
       titre: 'Portfolio - 2025',
+      type: 'standard',
     },
     {
       id: 8,
+      nom: 'Morpion',
+      sommaire: 'Création du jeu Tic Tac Toe.',
+      description:
+        'Programmation d’un jeu qui permet de jouer au jeu morpion en 3x3, 4x4 et 5x5 sur une application web. Projet réalisé sur React.',
+      image: [
+        '/projet/morpion-screen1.webp',
+        '/projet/morpion-screen2.webp',
+        '/projet/morpion-screen3.webp',
+        '/projet/morpion-screen4.webp',
+      ],
+      tags: [Tag.REACT, Tag.TYPESCRIPT, Tag.TAILWINDCSS],
+      projectLink: 'https://github.com/jestercsr/morpion-game',
+      where: 'Github',
+      titre: 'Morpion - 2025',
+      type: 'game',
+      gameUrl: 'https://morpion-game-two.vercel.app',
+    },
+    {
+      id: 9,
+      nom: 'Uno',
+      sommaire: 'Création du jeu Uno.',
+      description:
+        'Programmation d’un jeu qui permet de jouer au jeu UNO sur une application web. Projet réalisé sur React.',
+      image: ['/projet/uno-screen1.webp', '/projet/uno-screen2.webp'],
+      tags: [Tag.REACT, Tag.TYPESCRIPT, Tag.TAILWINDCSS],
+      projectLink: 'https://github.com/jestercsr/uno-game',
+      where: 'Github',
+      titre: 'Uno - 2025',
+      type: 'game',
+      gameUrl: 'https://uno-game-one.vercel.app',
+    },
+    {
+      id: 10,
+      nom: 'Puissance 4',
+      sommaire: 'Création du jeu Puissance 4.',
+      description:
+        'Programmation d’un jeu qui permet de jouer au jeu Puissance 4 sur une application web. Projet réalisé sur React.',
+      image: [
+        '/projet/connect-screen1.webp',
+        '/projet/connect-screen2.webp',
+        '/projet/connect-screen3.webp',
+      ],
+      tags: [Tag.REACT, Tag.TYPESCRIPT, Tag.TAILWINDCSS],
+      projectLink: 'https://github.com/jestercsr/puissance-4',
+      where: 'Github',
+      titre: 'Puissance 4 - 2025',
+      type: 'game',
+      gameUrl: 'https://puissance-4-ten.vercel.app',
+    },
+    {
+      id: 11,
       nom: 'Nova ERP',
       sommaire: "Création d'une application de gestion d'entreprise.",
       description:
@@ -149,6 +208,7 @@ export class ProjectsService {
       projectLink: '',
       where: 'Electron',
       titre: 'Nova ERP - 2025',
+      type: 'standard',
     },
   ];
 

@@ -5,43 +5,99 @@
   </div>
 
   <div class="modal-body">
-    <div class="carousel-container rounded-4 overflow-hidden shadow-lg mb-4">
-      <ngb-carousel [interval]="6000">
-        <ng-template ngbSlide *ngFor="let image of project.image">
-          <img
-            [src]="image"
-            alt="image de {{ project.nom }}"
-            class="d-block w-100 project-img"
-          />
-        </ng-template>
-      </ngb-carousel>
+    <!-- AFFICHAGE POUR LES JEUX -->
+    <div *ngIf="isGame()" class="game-modal-content">
+      <div class="game-split-container">
+        <!-- Section Gameplay -->
+        <div class="game-section gameplay-section">
+          <div class="section-header">
+            <h4>Gameplay</h4>
+          </div>
+          <iframe
+            [src]="getGameUrl() | safe: 'resourceUrl'"
+            class="game-iframe"
+            title="Gameplay - {{ project.nom }}"
+            allow="scripts"
+          ></iframe>
+        </div>
+
+        <!-- Section Code Source -->
+        <div class="game-section code-section">
+          <div class="section-header">
+            <h4>Code Source</h4>
+          </div>
+          <div class="code-content">
+            <div class="projet-modern small">
+              <p class="mb-3">{{ project.description }}</p>
+              
+              <div class="tech-stack mb-4">
+                <h5 class="projet-modern small mb-2">Stack Technologique</h5>
+                <div class="tags-container">
+                  <span
+                    *ngFor="let tag of project.tags"
+                    class="tag-pill"
+                    [style.borderColor]="tag.color"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="code-actions">
+                <a
+                  [href]="getSourceCodeUrl()"
+                  target="_blank"
+                  class="btn btn-outline-primary btn-sm me-2"
+                >
+                  <i class="bi bi-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="project-content">
-      <h3 class="section-title">Description</h3>
-      <p class="project-description">{{ project.description }}</p>
-
-      <div class="project-link my-3">
-        <span>Voir le projet sur {{ project.where }} :</span>
-        <a
-          [href]="project.projectLink"
-          target="_blank"
-          class="btn btn-gradient ms-2"
-        >
-          Ouvrir
-        </a>
+    <!-- AFFICHAGE POUR LES PROJETS CLASSIQUES -->
+    <div *ngIf="!isGame()" class="standard-project-content">
+      <div class="carousel-container rounded-4 overflow-hidden shadow-lg mb-4">
+        <ngb-carousel [interval]="6000">
+          <ng-template ngbSlide *ngFor="let image of project.image">
+            <img
+              [src]="image"
+              alt="image de {{ project.nom }}"
+              class="d-block w-100 project-img"
+            />
+          </ng-template>
+        </ngb-carousel>
       </div>
 
-      <hr class="divider" />
+      <div class="project-content">
+        <h3 class="section-title">Description</h3>
+        <p class="project-description">{{ project.description }}</p>
 
-      <div class="tags-container mt-3 d-flex flex-wrap justify-content-start">
-        <span
-          *ngFor="let tag of project.tags"
-          class="tag-pill"
-          [style.borderColor]="tag.color"
-        >
-          {{ tag }}
-        </span>
+        <div class="project-links my-3">
+          <span>Voir le projet sur {{ project.where }} :</span>
+          <a
+            [href]="project.projectLink"
+            target="_blank"
+            class="btn btn-gradient ms-2"
+          >
+            Ouvrir
+          </a>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="tags-container mt-3 d-flex flex-wrap justify-content-start">
+          <span
+            *ngFor="let tag of project.tags"
+            class="tag-pill"
+            [style.borderColor]="tag.color"
+          >
+            {{ tag }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
