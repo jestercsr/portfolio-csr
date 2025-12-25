@@ -2,6 +2,13 @@
   id="home"
   class="hero-section d-flex align-items-center justify-content-center text-center"
 >
+  <app-aurora
+    [colorStops]="['#0e0e98', '#7cff67', '#06b2e6']"
+    [amplitude]="2.0"
+    [blend]="0.5"
+    [speed]="2.0"
+  ></app-aurora>
+
   <div class="container position-relative z-1">
     <h1 class="display-3 fw-bold mb-4 fade-in">
       Bonjour, je suis
@@ -95,10 +102,10 @@
 <!-- SECTION TARIFS -->
 <section id="tarifs" class="pricing-section py-5">
   <div class="container text-center">
-    <h2 class="gradient-text fw-bold mb-5 fade-up">Mes Formules</h2>
+    <h2 class="gradient-text fw-bold mb-5">Mes Formules</h2>
 
-    <p class="fade-up-delay about-modern">Inclus dans chaque formule :</p>
-    <ul class="list-inline small fade-up-delay mb-5 about-modern">
+    <p class="about-modern">Inclus dans chaque formule :</p>
+    <ul class="list-inline small mb-5 about-modern">
       <li class="list-inline-item mx-2">💼 Facturation</li>
       <li class="list-inline-item mx-2">🚀 Livraison tous les accès</li>
       <li class="list-inline-item mx-2">⏱ Engagement sur les délais</li>
@@ -112,10 +119,10 @@
 
     <div class="row g-4 justify-content-center">
       <!-- FORMULE 1 -->
-      <div class="col-md-4 fade-up">
+      <div class="col-md-4">
         <div class="card pricing-card shadow-lg border-0 rounded-4 bg-glass">
           <div class="card-body">
-            <h3 class="card-title gradient-text">Formule 1</h3>
+            <h3 class="card-title gradient-text">Formule Starter</h3>
             <h4 class="price">à partir de <span>1500 €</span></h4>
             <ul class="list-unstyled mt-3 mb-4">
               <li>✅ Site vitrine (max 5 pages)</li>
@@ -133,10 +140,10 @@
       </div>
 
       <!-- FORMULE 2 -->
-      <div class="col-md-4 fade-up-delay">
+      <div class="col-md-4">
         <div class="card pricing-card shadow-lg border-0 rounded-4 bg-glass">
           <div class="card-body">
-            <h3 class="card-title gradient-text">Formule 2</h3>
+            <h3 class="card-title gradient-text">Formule Booster</h3>
             <h4 class="price">à partir de <span>4000 €</span></h4>
             <ul class="list-unstyled mt-3 mb-4">
               <li>✅ Site vitrine / e-commerce léger (max 8 pages)</li>
@@ -155,10 +162,10 @@
       </div>
 
       <!-- FORMULE 3 -->
-      <div class="col-md-4 fade-up-delay-2">
+      <div class="col-md-4">
         <div class="card pricing-card shadow-lg border-0 rounded-4 bg-glass">
           <div class="card-body">
-            <h3 class="card-title gradient-text">Formule 3</h3>
+            <h3 class="card-title gradient-text">Formule Pro Max</h3>
             <h4 class="price">à partir de <span>8000 €</span></h4>
             <ul class="list-unstyled mt-3 mb-4">
               <li>✅ Accompagnement complet</li>

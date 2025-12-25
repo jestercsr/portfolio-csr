@@ -7,6 +7,16 @@
   color: white;
 }
 
+.hero-section app-aurora {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -15,6 +25,7 @@
 }
 
 /* ===== ANIMATION DE PLUIE ===== */
+/*
 .rain-container {
   position: absolute;
   top: 0;
@@ -52,8 +63,9 @@
     opacity: 0;
   }
 }
-
+*/
 /* Effet de splash au sol (optionnel) */
+/*
 .raindrop::after {
   content: "";
   position: absolute;
@@ -81,6 +93,7 @@
     width: 15px;
   }
 }
+*/
 
 /* GLASS EFFECT */
 .bg-glass {
@@ -154,9 +167,9 @@
     width: 90%;
   }
 
-  .raindrop:nth-child(3n) {
+  /*.raindrop:nth-child(3n) {
     display: none;
-  }
+  }*/
 }
 
 @media (max-width: 768px) {
@@ -173,13 +186,13 @@
     width: 90%;
   }
 
-  .raindrop:nth-child(2n) {
+  /*.raindrop:nth-child(2n) {
     display: none;
   }
 
   .raindrop {
     height: 60px;
-  }
+  }*/
 }
 
 /* ---- FEATURED PROJECT ---- */
@@ -320,6 +333,7 @@ body.light-theme .pricing-card {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/*
 body.light-theme .raindrop {
   background: linear-gradient(
     to bottom,
@@ -328,6 +342,7 @@ body.light-theme .raindrop {
     rgba(155, 92, 255, 0.2)
   );
 }
+*/
 
 .form-floating ~ label {
   /* Règle corrigée - remplace le sélecteur cassé */

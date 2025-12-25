@@ -1,0 +1,121 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="text-center mb-5">
+      <h1 class="gradient-text fw-bold mb-3">Créer un compte</h1>
+      <p class="projet-modern">Accédez au dashboard</p>
+    </div>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Nom complet</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Votre nom"
+          class="form-input"
+          [class.error]="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+        <small class="error-text" *ngIf="getNameError()">
+          {{ getNameError() }}
+        </small>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="vous@exemple.com"
+          class="form-input"
+          [class.error]="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+        <small class="error-text" *ngIf="getEmailError()">
+          {{ getEmailError() }}
+        </small>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <div class="password-input-wrapper">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="••••••••"
+            class="form-input"
+            [class.error]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="showPassword = !showPassword"
+            aria-label="Afficher le mot de passe">
+
+            @if (showPassword) {
+                <ng-icon name="bootstrapEyeSlashFill" size="20"></ng-icon>
+            } @else {
+                <ng-icon name="bootstrapEyeFill" size="20"></ng-icon>
+            }
+          </button>
+        </div>
+        <small class="error-text" *ngIf="getPasswordError()">
+          {{ getPasswordError() }}
+        </small>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe</label>
+        <div class="password-input-wrapper">
+          <input
+            id="confirmPassword"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            placeholder="••••••••"
+            class="form-input"
+            [class.error]="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="showConfirmPassword = !showConfirmPassword"
+            aria-label="Afficher le mot de passe">
+            @if (showConfirmPassword) {
+                <ng-icon name="bootstrapEyeSlashFill" size="20"></ng-icon>
+            } @else {
+                <ng-icon name="bootstrapEyeFill" size="20"></ng-icon>
+            }
+          </button>
+        </div>
+        <small class="error-text" *ngIf="getConfirmPasswordError()">
+          {{ getConfirmPasswordError() }}
+        </small>
+      </div>
+
+      <!-- Error message -->
+      <div *ngIf="errorMessage" class="error-banner">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        {{ errorMessage }}
+      </div>
+
+      <!-- Submit button -->
+      <button
+        type="submit"
+        [disabled]="signupForm.invalid || isLoading"
+        class="submit-button">
+        <span *ngIf="!isLoading">Créer un compte</span>
+        <span *ngIf="isLoading">Création en cours...</span>
+      </button>
+    </form>
+
+    <!-- Login link -->
+    <div class="auth-footer">
+      <p>Vous avez déjà un compte? <button class="link-button" (click)="goToLogin()">Se connecter</button></p>
+    </div>
+  </div>
+</div>

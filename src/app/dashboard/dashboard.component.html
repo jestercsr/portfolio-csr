@@ -1,0 +1,185 @@
+<div class="dashboard-container container py-5">
+  <!-- En-tête -->
+  <div class="dashboard-header py-5">
+    <div>
+      <h1 class="gradient-text fw-bold mb-3">Dashboard</h1>
+      <p>Gérez tous les retours de vos visiteurs</p>
+    </div>
+    <button class="btn btn-glass" (click)="exportFeedbacks()" title="Exporter en JSON">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+        <polyline points="16 6 12 2 8 6"/>
+        <line x1="12" y1="2" x2="12" y2="15"/>
+      </svg>
+      Exporter
+    </button>
+  </div>
+
+  <!-- Statistiques -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">Total d'avis</div>
+      <div class="stat-value">{{ totalFeedbacks }}</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">Rapports de bugs</div>
+      <div class="stat-value stat-bug">{{ bugCount }}</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">Suggestions</div>
+      <div class="stat-value stat-suggestion">{{ suggestionCount }}</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">Compliments</div>
+      <div class="stat-value stat-compliment">{{ complimentCount }}</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">Résolus</div>
+      <div class="stat-value">{{ resolvedCount }}/{{ totalFeedbacks }}</div>
+    </div>
+
+    <div class="stat-card" *ngIf="averageRating > 0">
+      <div class="stat-label">Note moyenne</div>
+      <div class="stat-value">{{ averageRating.toFixed(1) }}/5 ⭐</div>
+    </div>
+  </div>
+
+  <!-- Filtres et recherche -->
+  <div class="filters-section">
+    <div class="filter-group">
+      <label>Type:</label>
+      <div class="filter-buttons">
+        <button 
+          *ngFor="let type of ['all', 'bug', 'suggestion', 'compliment']"
+          (click)="filterByType(type)"
+          [class.active]="selectedType === type"
+          class="filter-btn">
+          <span *ngIf="type !== 'all'">
+            {{ type === 'bug' ? '404' : type === 'suggestion' ? '💡' : '⭐' }}
+          </span>
+          {{ type === 'all' ? 'Tous' : (type) }}
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Statut:</label>
+      <div class="filter-buttons">
+        <button 
+          *ngFor="let status of ['all', 'pending', 'resolved']"
+          (click)="filterByStatus(status)"
+          [class.active]="selectedStatus === status"
+          class="filter-btn">
+          {{ status === 'all' ? 'Tous' : status === 'pending' ? 'En attente' : 'Résolus' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Tri:</label>
+      <select (change)="onSortChange($event)" class="sort-select">
+        <option value="recent">Plus récents</option>
+        <option value="oldest">Plus anciens</option>
+        <option value="rating">Meilleure note</option>
+      </select>
+    </div>
+
+    <div class="search-group">
+      <input 
+        type="text"
+        placeholder="Rechercher..."
+        (input)="onSearchChange($event)"
+        class="search-input">
+    </div>
+  </div>
+
+  <!-- Liste des feedbacks -->
+  <div class="feedbacks-section">
+    <div *ngIf="isLoading" class="loading">
+      <div class="spinner"></div>
+      <p>Chargement des avis...</p>
+    </div>
+
+    <div *ngIf="!isLoading && filteredFeedbacks.length === 0" class="empty-state">
+      <p>Aucun avis trouvé</p> 
+    </div>
+
+    <div *ngIf="!isLoading && filteredFeedbacks.length > 0" class="feedbacks-list">
+      <div 
+        *ngFor="let feedback of filteredFeedbacks"
+        class="feedback-card"
+        [class.expanded]="expandedFeedbackId === feedback.id"
+        (click)="toggleExpanded(feedback.id)">
+        
+        <!-- En-tête du card -->
+        <div class="feedback-header">
+          <div class="feedback-info">
+            <span class="feedback-type" [style.color]="getTypeColor(feedback.type)">
+              {{ getTypeIcon(feedback.type) }}
+            </span>
+            <div class="feedback-title">
+              <h3>{{ feedback.title }}</h3>
+              <p class="feedback-meta">
+                {{ feedback.pageUrl | slice:0:50 }}...
+              </p>
+            </div>
+          </div>
+
+          <div class="feedback-badges">
+            <span [class]="getStatusBadgeClass(feedback)">
+              {{ feedback.resolved ? '✓ Résolu' : '⏳ En attente' }}
+            </span>
+            <span class="badge-date">{{ formatDate(feedback.timestamp) }}</span>
+          </div>
+        </div>
+
+        <!-- Contenu déplié -->
+        <div class="feedback-content" *ngIf="expandedFeedbackId === feedback.id">
+          <div class="message-section">
+            <h4>Message:</h4>
+            <p>{{ feedback.message }}</p>
+          </div>
+
+          <div class="details-section">
+            <div class="detail" *ngIf="feedback.rating">
+              <span class="detail-label">Note:</span>
+              <span class="detail-value">{{ feedback.rating }}/5 ⭐</span>
+            </div>
+            <div class="detail" *ngIf="feedback.email">
+              <span class="detail-label">Email:</span>
+              <a [href]="'mailto:' + feedback.email" class="detail-value">
+                {{ feedback.email }}
+              </a>
+            </div>
+            <div class="detail">
+              <span class="detail-label">Page:</span>
+              <a [href]="feedback.pageUrl" target="_blank" class="detail-value">
+                Visiter
+              </a>
+            </div>
+          </div>
+
+          <div class="actions-section">
+            <button 
+              *ngIf="!feedback.resolved"
+              (click)="resolveFeedback(feedback.id, $event)"
+              class="action-btn resolve-btn"
+              title="Marquer comme résolu">
+              ✓ Marquer comme résolu
+            </button>
+            <button 
+              (click)="deleteFeedback(feedback.id, $event)"
+              class="action-btn delete-btn"
+              title="Supprimer">
+              🗑️ Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

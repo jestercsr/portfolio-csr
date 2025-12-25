@@ -28,7 +28,7 @@ export class InvoiceModalComponent implements OnInit {
   };
   public message: string = '';
   public today = new Date();
-  public tva = 20;
+  public tva = 0;
   public subtotal = 0;
   public total = 0;
   public invoiceNumber = '';

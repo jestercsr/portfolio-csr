@@ -1,7 +1,8 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { NgbModal, NgbModalModule, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseConfig, NgbModal, NgbModalModule, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { InvoiceModalComponent } from '../invoice-modal/invoice-modal.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tarifs',
@@ -12,7 +13,7 @@ import { InvoiceModalComponent } from '../invoice-modal/invoice-modal.component'
 export class TarifsComponent {
   formules = [
     {
-      titre: 'Formule 1',
+      titre: 'Formule Starter',
       prix: '1500 €',
       details: [
         'Site vitrine (max 5 pages)',
@@ -26,7 +27,7 @@ export class TarifsComponent {
       delais: 'Délais 10 à 15 jours',
     },
     {
-      titre: 'Formule 2',
+      titre: 'Formule Booster',
       prix: '4000 €',
       details: [
         'Site vitrine ou e-commerce léger (max 8 pages)',
@@ -41,7 +42,7 @@ export class TarifsComponent {
       delais: 'Délais 3 semaines',
     },
     {
-      titre: 'Formule 3',
+      titre: 'Formule Pro Max',
       prix: '8000 €',
       details: [
         'Accompagnement complet',
@@ -58,18 +59,21 @@ export class TarifsComponent {
   ];
 
   tarifs = [
-    { type: 'Site vitrine', prix: '180', detail: '180 € /j + 30 € (administration)' },
-    { type: 'Site e-commerce', prix: '250', detail: '250 € /j + 30 € (administration)' },
+    { type: 'Site vitrine', prix: '250', detail: '250 € / jour' },
+    { type: 'Site e-commerce', prix: '350', detail: '350 € / jour' },
+    { type: 'Application web', prix: '500', detail: '500 € / jour' },
     { type: 'Site no-code', prix: '500', detail: '500 €' },
     { type: 'Refonte', prix: '800', detail: '400 € - 1000 €' },
-    { type: 'Maintenance - Pack 5 tickets', prix: '100', detail: '100 €' },
-    { type: 'Maintenance - Pack 10 tickets', prix: '180', detail: '180 €' },
-    { type: 'Maintenance - Ticket unique', prix: '30', detail: 'à partir de 30 €' },
-    { type: 'Application web', prix: '400', detail: '400 € /j + 30 € (administration)' },
+    { type: 'Maintenance - Pack 5 tickets', prix: '150', detail: '150 €' },
+    { type: 'Maintenance - Pack 10 tickets', prix: '300', detail: '300 €' },
+    { type: 'Maintenance - Ticket unique', prix: '40', detail: 'à partir de 40 €' },
     { type: 'NovaERP (logiciel de gestion)', prix: '2600', detail: 'à partir de 2600 €' },
   ];
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private titleService: Title, config: NgbCollapseConfig) {
+    this.titleService.setTitle('Tarifs - Portfolio de Jester CESAR');
+    config.animation = true
+  }
 
   openInvoiceModal(item: any) {
     const modalOptions: NgbModalOptions = {
