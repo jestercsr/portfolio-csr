@@ -6,6 +6,10 @@ import { ContactComponent } from './contact/contact.component';
 import { TemplateComponent } from './template/template.component';
 import { MentionsLegalesComponent } from './mentions-legales/mentions-legales.component';
 import { TarifsComponent } from './tarifs/tarifs.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { authGuard } from './_service/auth.guard';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -15,5 +19,7 @@ export const routes: Routes = [
     {path: 'template', component: TemplateComponent},
     {path: 'mentions-legales', component: MentionsLegalesComponent},
     { path: 'tarif', component: TarifsComponent },
+    { path: 'auth', children: [ {path: 'login', component: LoginComponent }, {path: 'signup', component: SignupComponent}] },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard], },
     {path: '**', component: HomeComponent, pathMatch: 'full'}
 ];

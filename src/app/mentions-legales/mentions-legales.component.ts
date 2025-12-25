@@ -16,6 +16,7 @@ import {
   bootstrapArrowUpShort,
   bootstrapPrinterFill,
 } from '@ng-icons/bootstrap-icons';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mentions-legales',
@@ -46,7 +47,9 @@ export class MentionsLegalesComponent
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private contactService: ContactService, private el: ElementRef) {}
+  constructor(private contactService: ContactService, private titleService: Title, private el: ElementRef) {
+    this.titleService.setTitle('Mentions Légales - Portfolio de Jester CESAR');
+  }
 
   getLabel(id: string) {
     const map: any = {

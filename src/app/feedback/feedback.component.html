@@ -1,0 +1,108 @@
+<div class="feedback-widget">
+
+  <!-- Panneau de feedback -->
+  <div class="feedback-content">
+    <div class="feedback-header">
+      <h3>J'aimerais avoir votre avis</h3>
+      <p>Partagez un bug, une suggestion ou un compliment</p>
+    </div>
+
+    <div *ngIf="submitSuccess" class="success-message">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span>Merci pour votre avis!</span>
+    </div>
+
+    <!-- Formulaire -->
+    <div *ngIf="!submitSuccess" class="feedback-form">
+      <div class="type-selector">
+        <label>Type de retour:</label>
+        <div class="type-buttons">
+          <button 
+            *ngFor="let type of ['bug', 'suggestion', 'compliment']"
+            (click)="selectType(type)"
+            [class.active]="selectedType === type"
+            class="type-btn">
+            <span class="type-icon">
+              <ng-container [ngSwitch]="type">
+                <span *ngSwitchCase="'bug'">404</span>
+                <span *ngSwitchCase="'suggestion'">💡</span>
+                <span *ngSwitchCase="'compliment'">⭐</span>
+              </ng-container>
+            </span>
+            {{ type }}
+          </button>
+        </div>
+      </div>
+
+      <form [formGroup]="feedbackForm">
+        <div class="form-group">
+          <label for="title">Titre</label>
+          <input 
+            id="title"
+            type="text" 
+            formControlName="title"
+            placeholder="Résumé court"
+            class="form-input">
+          <small class="error" *ngIf="feedbackForm.get('title')?.hasError('required')">
+            Le titre est requis
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea 
+            id="message"
+            formControlName="message"
+            placeholder="Décrivez votre avis en détail..."
+            class="form-textarea"
+            rows="4"></textarea>
+          <small class="error" *ngIf="feedbackForm.get('message')?.hasError('required')">
+            Le message est requis
+          </small>
+        </div>
+
+        <div class="form-group" *ngIf="selectedType === 'compliment'">
+          <label for="rating">Note</label>
+          <div class="rating-input">
+            <input 
+              id="rating"
+              type="range" 
+              formControlName="rating"
+              min="1" 
+              max="5"
+              class="rating-slider">
+            <span class="rating-value">{{ feedbackForm.get('rating')?.value }}/5</span>
+          </div>
+        </div>
+
+        <!-- Email (optionnel) -->
+        <div class="form-group">
+          <label for="email">Email (optionnel)</label>
+          <input 
+            id="email"
+            type="email" 
+            formControlName="email"
+            placeholder="votre@email.com"
+            class="form-input">
+          <small class="error" *ngIf="feedbackForm.get('email')?.hasError('email')">
+            Email invalide
+          </small>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+
+        <button 
+          (click)="submitFeedback()"
+          [disabled]="feedbackForm.invalid || isSubmitting"
+          class="submit-btn">
+          <span *ngIf="!isSubmitting">Envoyer</span>
+          <span *ngIf="isSubmitting">En cours...</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

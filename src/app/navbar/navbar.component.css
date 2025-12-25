@@ -24,19 +24,20 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(245, 245, 245, 0.98)
+    rgba(255, 255, 255, 0.2),
+    rgba(245, 245, 245, 0.2)
   );
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(2px);
 }
 
 .dark-mode.navbar-floating {
   background: linear-gradient(
     135deg,
-    rgba(20, 20, 20, 0.95),
-    rgba(45, 45, 45, 0.98)
+    rgba(20, 20, 20, 0.2),
+    rgba(45, 45, 45, 0.2)
   );
   box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
 }
 
 .logo-icon {
@@ -116,6 +117,9 @@
     &.active {
       background: linear-gradient(90deg, #0e0e98, #06b2e6);
       color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

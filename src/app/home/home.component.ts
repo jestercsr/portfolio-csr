@@ -5,19 +5,19 @@ import { Project } from '../_models/Project';
 import { NgbCarousel, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
 import { NgFor } from '@angular/common';
 import { ThemeService } from '../_service/theme.service';
+import { AuroraComponent } from "../aurora/aurora.component";
 
 @Component({
   selector: 'app-home',
-  imports: [NgbCarousel, NgFor, NgbSlide],
+  imports: [NgbCarousel, NgFor, NgbSlide, AuroraComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HomeComponent implements OnInit { //, AfterViewInit, OnDestroy {
   featuredProjects = {} as Project;
-  private raindrops: HTMLElement[] = [];
-  private animationFrameId: number | null = null;
-  private observer!: IntersectionObserver;
-  private isVisible = true;
+  //private raindrops: HTMLElement[] = [];
+  //private observer!: IntersectionObserver;
+  //private isVisible = true;
 
   constructor(
     private titleService: Title,
@@ -42,10 +42,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.featuredProjects = this.projectsService.GetLastProject();
     
     // Arrêter l'animation quand on quitte la page
-    window.addEventListener('visibilitychange', this.handleVisibilityChange);
+    //window.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
 
-  ngAfterViewInit(): void {
+  /*ngAfterViewInit(): void {
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -156,5 +156,5 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
     animate();
-  }
+  }*/
 }
