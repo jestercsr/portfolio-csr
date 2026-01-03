@@ -1,7 +1,7 @@
 <section class="cv-section container py-5 mt-5 text-center">
   <div class="mb-5 fade-in">
     <button class="btn btn-glass btn-lg" (click)="DownloadFile()">
-      <ng-icon name="bootstrapDownload" class="me-2"></ng-icon>
+      <ng-icon id="icon" name="bootstrapDownload" class="me-2"></ng-icon>
       Télécharger le CV (PDF)
     </button>
   </div>
@@ -11,7 +11,7 @@
     <div ngbAccordionItem="Compétences Techniques">
       <h2 ngbAccordionHeader>
         <button ngbAccordionButton class="accordion-btn">
-          💻 Compétences Techniques
+          <ng-icon id="icon" name="bootstrapLaptop" class="me-2"></ng-icon> Compétences Techniques
         </button>
       </h2>
       <div ngbAccordionCollapse>
@@ -75,7 +75,7 @@
   <div ngbAccordion class="cv-accordion mt-4" [animation]="true">
     <div ngbAccordionItem="Projets">
       <h2 ngbAccordionHeader>
-        <button ngbAccordionButton class="accordion-btn">🚀 Projets</button>
+        <button ngbAccordionButton class="accordion-btn"><ng-icon id="icon" name="bootstrapRocketTakeoff" class="me-2"></ng-icon> Projets</button>
       </h2>
       <div ngbAccordionCollapse>
         <div
@@ -95,7 +95,7 @@
   <div ngbAccordion class="cv-accordion mt-4" [animation]="true">
     <div ngbAccordionItem="Formations">
       <h2 ngbAccordionHeader>
-        <button ngbAccordionButton class="accordion-btn">🎓 Formations</button>
+        <button ngbAccordionButton class="accordion-btn"><ng-icon id="icon" name="bootstrapMortarboardFill" class="me-2"></ng-icon> Formations</button>
       </h2>
       <div ngbAccordionCollapse>
         <div
@@ -115,7 +115,7 @@
   <div ngbAccordion class="cv-accordion mt-4" [animation]="true">
     <div ngbAccordionItem="Langues">
       <h2 ngbAccordionHeader>
-        <button ngbAccordionButton class="accordion-btn">🌍 Langues</button>
+        <button ngbAccordionButton class="accordion-btn"><ng-icon id="icon" name="bootstrapGlobeAmericas" class="me-2"></ng-icon> Langues</button>
       </h2>
       <div ngbAccordionCollapse>
         <div ngbAccordionBody class="accordion-body-custom">
@@ -133,7 +133,7 @@
   <div ngbAccordion class="cv-accordion mt-4" [animation]="true">
     <div ngbAccordionItem="Soft Skills">
       <h2 ngbAccordionHeader>
-        <button ngbAccordionButton class="accordion-btn">🧠 Soft Skills</button>
+        <button ngbAccordionButton class="accordion-btn"><ng-icon id="icon" name="bootstrapServer" class="me-2"></ng-icon> Soft Skills</button>
       </h2>
       <div ngbAccordionCollapse>
         <div ngbAccordionBody class="accordion-body-custom">
@@ -154,7 +154,7 @@
     <div ngbAccordionItem="Intérêts">
       <h2 ngbAccordionHeader>
         <button ngbAccordionButton class="accordion-btn">
-          🎮 Centres d'intérêt
+          <ng-icon id="icon" name="bootstrapController" class="me-2"></ng-icon> Centres d'intérêt
         </button>
       </h2>
       <div ngbAccordionCollapse>

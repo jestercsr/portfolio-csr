@@ -16,12 +16,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   feedbacks: Feedback[] = [];
   filteredFeedbacks: Feedback[] = [];
   
-  // Filtres
   selectedType: 'all' | 'bug' | 'suggestion' | 'compliment' = 'all';
   selectedStatus: 'all' | 'resolved' | 'pending' = 'all';
   searchQuery = '';
 
-  // Statistiques
   totalFeedbacks = 0;
   bugCount = 0;
   suggestionCount = 0;
@@ -77,18 +75,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
   applyFilters(): void {
     let filtered = [...this.feedbacks];
 
-    // Filtre par type
     if (this.selectedType !== 'all') {
       filtered = filtered.filter(f => f.type === this.selectedType);
     }
 
-    // Filtre par statut
     if (this.selectedStatus !== 'all') {
       const isResolved = this.selectedStatus === 'resolved';
       filtered = filtered.filter(f => f.resolved === isResolved);
     }
 
-    // Recherche par titre ou message
     if (this.searchQuery.trim()) {
       const query = this.searchQuery.toLowerCase();
       filtered = filtered.filter(f =>
@@ -98,14 +93,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     filtered.sort((a, b) => {
+      const aTime = new Date(a.timestamp || 0).getTime();
+      const bTime = new Date(b.timestamp || 0).getTime();
+      
       switch (this.sortBy) {
         case 'oldest':
-          return new Date(a.timestamp || 0).getTime() - new Date(b.timestamp || 0).getTime();
+          return aTime - bTime;
         case 'rating':
           return (b.rating || 0) - (a.rating || 0);
         case 'recent':
         default:
-          return new Date(b.timestamp || 0).getTime() - new Date(a.timestamp || 0).getTime();
+          return bTime - aTime;
       }
     });
 
@@ -122,7 +120,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   filterByStatus(status: string): void {
     if (status === 'all' || status === 'resolved' || status === 'pending') {
       this.selectedStatus = status as 'all' | 'resolved' | 'pending';
-      this.applyFilters()
+      this.applyFilters();
     }
   }
 
@@ -150,7 +148,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.feedbackService.resolveFeedback(feedbackId)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: () => this.updateStatistics(),
+        next: () => {
+          this.loadFeedbacks();
+        },
         error: (error) => console.error('Error resolving feedback:', error)
       });
   }
@@ -166,14 +166,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.feedbackService.deleteFeedback(feedbackId)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: () => this.updateStatistics(),
+        next: () => {
+          this.loadFeedbacks();
+        },
         error: (error) => console.error('Error deleting feedback:', error)
       });
   }
 
   getTypeIcon(type: string): string {
     const icons: { [key: string]: string } = {
-      'bug': '404',
+      'bug': '🐛',
       'suggestion': '💡',
       'compliment': '⭐'
     };

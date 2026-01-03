@@ -60,6 +60,9 @@ body.light-theme .gradient-text {
 }
 body.light-theme .contact-text {
   background: linear-gradient(90deg, #fefeff, #06b2e6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -168,8 +171,22 @@ body.dark-theme .gradient-text {
 }
 body.dark-theme .contact-text {
   background: linear-gradient(90deg, #0e0e98, #06b2e6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.contact-text #icon {
+  color: #06b2e6;
+  margin-left: 10px;
+}
+body.dark-theme .contact-text #icon {
+  color: #0e0e98;
+}
+#icon {
+  align-items: center;
+  justify-content: center;
 }
 body.dark-theme .btn-glass {
   background: linear-gradient(90deg, #06b2e6, #0e0e98);

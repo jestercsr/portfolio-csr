@@ -8,14 +8,14 @@ import { ProjectsService } from '../_service/projects.service';
 import { CvFormationsComponent } from '../cv-formations/cv-formations.component';
 import { FormationService } from '../_service/formation.service';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { bootstrapDownload } from '@ng-icons/bootstrap-icons';
+import { bootstrapController, bootstrapDownload, bootstrapGlobeAmericas, bootstrapLaptop, bootstrapMortarboardFill, bootstrapRocketTakeoff, bootstrapServer } from '@ng-icons/bootstrap-icons';
 
 @Component({
   selector: 'app-cv',
   imports: [NgIcon, CvModalComponent, CvFormationsComponent, NgFor, NgbAccordionDirective, NgbAccordionItem, NgbAccordionBody, NgbAccordionButton, NgbAccordionCollapse, NgbAccordionHeader, CvModalComponent],
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',
-  providers: [provideIcons({ bootstrapDownload })]
+  providers: [provideIcons({ bootstrapDownload, bootstrapRocketTakeoff, bootstrapGlobeAmericas, bootstrapController, bootstrapLaptop, bootstrapMortarboardFill, bootstrapServer })]
 })
 export class CvComponent implements OnInit {
 formation: any;

@@ -4,6 +4,7 @@ import {
   bootstrapTelephoneFill,
   bootstrapInboxFill,
   bootstrapPinAngleFill,
+  bootstrapRocketTakeoff,
 } from '@ng-icons/bootstrap-icons';
 import { ContactService } from '../_service/contact.service';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
       bootstrapTelephoneFill,
       bootstrapInboxFill,
       bootstrapPinAngleFill,
+      bootstrapRocketTakeoff
     }),
   ],
 })

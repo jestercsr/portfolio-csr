@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export interface AuthUser {
   id: string;
@@ -32,7 +33,7 @@ export interface SignupRequest {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = `/api/auth`;
+  private apiUrl = `${environment.apiUrl}/api/auth`;
   private userSubject = new BehaviorSubject<AuthUser | null>(null);
   private sessionSubject = new BehaviorSubject<AuthSession | null>(null);
   private loadingSubject = new BehaviorSubject(true);
@@ -45,18 +46,18 @@ export class AuthService {
     this.initializeSession();
   }
 
-  // Initialiser la session au démarrage
   private initializeSession(): void {
     const token = this.getToken();
     const storedUser = this.getStoredUser();
 
     if (token && storedUser) {
-      // Restaurer la session depuis le localStorage
       this.userSubject.next(storedUser);
       this.loadingSubject.next(false);
 
-      // Vérifier que le token est toujours valide
       this.getSession().subscribe({
+        next: () => {
+          console.log('Session validée');
+        },
         error: () => {
           this.clearToken();
           this.loadingSubject.next(false);
@@ -109,7 +110,6 @@ export class AuthService {
           this.userSubject.next(null);
         }),
         catchError(error => {
-          // Nettoyer même si la requête échoue
           this.clearToken();
           this.sessionSubject.next(null);
           this.userSubject.next(null);
@@ -118,7 +118,6 @@ export class AuthService {
       );
   }
 
-  // Obtenir la session actuelle
   getSession(): Observable<AuthSession> {
     const headers = { 'Authorization': `Bearer ${this.getToken()}` };
     return this.http.get<AuthSession>(`${this.apiUrl}/session`, { headers })
@@ -133,40 +132,33 @@ export class AuthService {
       );
   }
 
-  // Vérifier si l'utilisateur est connecté
   isAuthenticated(): boolean {
     return !!this.userSubject.value && !!this.getToken();
   }
 
-  // Obtenir l'utilisateur actuel
   getCurrentUser(): AuthUser | null {
     return this.userSubject.value;
   }
 
-  // Obtenir le token
   getToken(): string | null {
     return localStorage.getItem('auth_token');
   }
 
-  // Stocker la session
   private storeSession(session: AuthSession): void {
     localStorage.setItem('auth_token', session.session.id);
     localStorage.setItem('auth_user', JSON.stringify(session.user));
   }
 
-  // Récupérer l'utilisateur stocké
   private getStoredUser(): AuthUser | null {
     const stored = localStorage.getItem('auth_user');
     return stored ? JSON.parse(stored) : null;
   }
 
-  // Effacer le token
   private clearToken(): void {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('auth_user');
   }
 
-  // Obtenir les headers d'authentification
   getAuthHeaders() {
     const token = this.getToken();
     return {
