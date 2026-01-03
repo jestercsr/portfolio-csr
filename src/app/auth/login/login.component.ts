@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   goToSignup(): void {
-    this.router.navigate(['/auth/signup']);
+    this.router.navigate(['/']);
   }
 
   ngOnDestroy(): void {

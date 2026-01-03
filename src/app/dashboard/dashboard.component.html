@@ -5,14 +5,24 @@
       <h1 class="gradient-text fw-bold mb-3">Dashboard</h1>
       <p>Gérez tous les retours de vos visiteurs</p>
     </div>
-    <button class="btn btn-glass" (click)="exportFeedbacks()" title="Exporter en JSON">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-        <polyline points="16 6 12 2 8 6"/>
-        <line x1="12" y1="2" x2="12" y2="15"/>
-      </svg>
-      Exporter
-    </button>
+    <div class="header-actions">
+      <button class="btn btn-glass" (click)="exportFeedbacks()" title="Exporter en JSON">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+          <polyline points="16 6 12 2 8 6"/>
+          <line x1="12" y1="2" x2="12" y2="15"/>
+        </svg>
+        Exporter
+      </button>
+      <button class="btn btn-logout" (click)="logout()" title="Se déconnecter">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Déconnexion
+      </button>
+    </div>
   </div>
 
   <!-- Statistiques -->
