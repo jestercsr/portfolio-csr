@@ -1,6 +1,13 @@
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.card li {
+  display: flex;
+  align-items: center;
+}
+#icon {
+  margin-right: 3px;
+}
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);

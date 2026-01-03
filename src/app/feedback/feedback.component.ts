@@ -4,13 +4,16 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Feedback, FeedbackService } from '../_service/feedback.service';
 import { CommonModule, NgFor, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { bootstrapLightbulbFill, bootstrapStarFill } from '@ng-icons/bootstrap-icons';
 
 @Component({
   selector: 'app-feedback',
-  imports: [NgIf, NgFor, NgSwitch, NgSwitchCase, CommonModule, ReactiveFormsModule],
+  imports: [NgIf, NgFor, NgSwitch, NgSwitchCase, CommonModule, ReactiveFormsModule, NgIcon],
   templateUrl: './feedback.component.html',
   styleUrl: './feedback.component.css',
-  standalone: true
+  standalone: true,
+  providers: [provideIcons({bootstrapLightbulbFill, bootstrapStarFill})],
 })
 export class FeedbackComponent implements OnInit, OnDestroy {
   feedbackForm: FormGroup;

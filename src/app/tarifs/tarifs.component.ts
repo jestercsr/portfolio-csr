@@ -3,12 +3,24 @@ import { Component } from '@angular/core';
 import { NgbCollapseConfig, NgbModal, NgbModalModule, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { InvoiceModalComponent } from '../invoice-modal/invoice-modal.component';
 import { Title } from '@angular/platform-browser';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { bootstrapBriefcaseFill, bootstrapCheck2Circle, bootstrapFileEarmarkFill, bootstrapFloppy2Fill, bootstrapRocketTakeoff, bootstrapStopwatch } from '@ng-icons/bootstrap-icons';
 
 @Component({
   selector: 'app-tarifs',
-  imports: [NgClass, NgFor, NgIf, NgbModalModule],
+  imports: [NgClass, NgFor, NgIf, NgbModalModule, NgIcon],
   templateUrl: './tarifs.component.html',
   styleUrl: './tarifs.component.css',
+  providers: [
+    provideIcons({
+      bootstrapRocketTakeoff,
+      bootstrapStopwatch,
+      bootstrapBriefcaseFill,
+      bootstrapFileEarmarkFill,
+      bootstrapFloppy2Fill,
+      bootstrapCheck2Circle
+    }),
+  ],
 })
 export class TarifsComponent {
   formules = [
@@ -28,7 +40,7 @@ export class TarifsComponent {
     },
     {
       titre: 'Formule Booster',
-      prix: '4000 €',
+      prix: '5000 €',
       details: [
         'Site vitrine ou e-commerce léger (max 8 pages)',
         'Maquette responsive',
@@ -37,7 +49,7 @@ export class TarifsComponent {
         'Aide à l’achat nom de domaine + hébergement',
         'SEO inclus',
         '6 tickets de maintenance inclus',
-        'Délais 3 semaines (si 22 jours → 5500 €)',
+        'Délais 3 semaines (si 22 jours → 6500 €)',
       ],
       delais: 'Délais 3 semaines',
     },
@@ -63,11 +75,14 @@ export class TarifsComponent {
     { type: 'Site e-commerce', prix: '350', detail: '350 € / jour' },
     { type: 'Application web', prix: '500', detail: '500 € / jour' },
     { type: 'Site no-code', prix: '500', detail: '500 €' },
-    { type: 'Refonte', prix: '800', detail: '400 € - 1000 €' },
+    { type: 'Refonte Backend', prix: '600', detail: '300 € - 1000 €' },
+    { type: 'Refonte Frontend', prix: '3800', detail: '1800 € - 5500 €' },
+    { type: 'Refonte Fullstack', prix: '4500', detail: '3000 € - 7000 €' },
+    { type: 'Maintenance - Ticket unique', prix: '40', detail: 'à partir de 40 €' },
     { type: 'Maintenance - Pack 5 tickets', prix: '150', detail: '150 €' },
     { type: 'Maintenance - Pack 10 tickets', prix: '300', detail: '300 €' },
-    { type: 'Maintenance - Ticket unique', prix: '40', detail: 'à partir de 40 €' },
-    { type: 'NovaERP (logiciel de gestion)', prix: '2600', detail: 'à partir de 2600 €' },
+    { type: 'Maintenance - par mois', prix: '250', detail: 'à partir de 150 € / mois' },
+    { type: 'NovaERP (logiciel de gestion)', prix: '3600', detail: 'à partir de 3600 €' },
   ];
 
   constructor(private modalService: NgbModal, private titleService: Title, config: NgbCollapseConfig) {

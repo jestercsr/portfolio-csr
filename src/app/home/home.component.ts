@@ -6,12 +6,24 @@ import { NgbCarousel, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
 import { NgFor } from '@angular/common';
 import { ThemeService } from '../_service/theme.service';
 import { AuroraComponent } from "../aurora/aurora.component";
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { bootstrapBriefcaseFill, bootstrapCheck2Circle, bootstrapFileEarmarkFill, bootstrapFloppy2Fill, bootstrapRocketTakeoff, bootstrapStopwatch } from '@ng-icons/bootstrap-icons';
 
 @Component({
   selector: 'app-home',
-  imports: [NgbCarousel, NgFor, NgbSlide, AuroraComponent],
+  imports: [NgbCarousel, NgFor, NgbSlide, AuroraComponent, NgIcon],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
+  providers: [
+    provideIcons({
+      bootstrapRocketTakeoff,
+      bootstrapStopwatch,
+      bootstrapBriefcaseFill,
+      bootstrapFileEarmarkFill,
+      bootstrapFloppy2Fill,
+      bootstrapCheck2Circle
+    }),
+  ],
 })
 export class HomeComponent implements OnInit { //, AfterViewInit, OnDestroy {
   featuredProjects = {} as Project;

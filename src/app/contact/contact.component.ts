@@ -7,7 +7,7 @@ import { FeedbackComponent } from "../feedback/feedback.component";
 
 @Component({
   selector: 'app-contact',
-  imports: [VirtualCardComponent ], //, FeedbackComponent],
+  imports: [VirtualCardComponent, FeedbackComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
   providers: [provideIcons({ bootstrapLinkedin, bootstrapGithub })]

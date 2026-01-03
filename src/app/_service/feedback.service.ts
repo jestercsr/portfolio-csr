@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export interface Feedback {
+  _id?: string;
   id?: string;
   type: 'bug' | 'suggestion' | 'compliment';
   title: string;
@@ -16,9 +18,21 @@ export interface Feedback {
   resolved?: boolean;
 }
 
+interface ApiResponse<T> {
+  success: boolean;
+  data: T;
+  pagination?: {
+    page: number;
+    limit: number;
+    total: number;
+    pages: number;
+  };
+}
+
 @Injectable({ providedIn: 'root' })
 export class FeedbackService {
-  private apiUrl = '/api/feedbacks';
+  private apiUrl = `${environment.apiUrl}/api/feedbacks`;
+  
   private feedbacksSubject = new BehaviorSubject<Feedback[]>([]);
   public feedbacks$ = this.feedbacksSubject.asObservable();
 
@@ -34,7 +48,8 @@ export class FeedbackService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.post<Feedback>(this.apiUrl, feedback, { headers }).pipe(
+    return this.http.post<ApiResponse<Feedback>>(this.apiUrl, feedback, { headers }).pipe(
+      map(response => response.data),
       tap(newFeedback => {
         const current = this.feedbacksSubject.value;
         this.feedbacksSubject.next([...current, newFeedback]);
@@ -43,23 +58,50 @@ export class FeedbackService {
   }
 
   getFeedbacks(): Observable<Feedback[]> {
-    return this.http.get<Feedback[]>(this.apiUrl).pipe(
-      tap(feedbacks => this.feedbacksSubject.next(feedbacks))
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<ApiResponse<Feedback[]>>(this.apiUrl, { headers }).pipe(
+      map(response => {
+        return response.data.map((f: any) => ({
+          ...f,
+          id: f._id || f.id
+        }));
+      }),
+      tap(feedbacks => {
+        this.feedbacksSubject.next(feedbacks);
+      })
     );
   }
 
   private loadFeedbacks(): void {
-    this.getFeedbacks().subscribe();
+    this.getFeedbacks().subscribe({
+      next: () => {
+        console.log('Feedbacks chargés');
+      },
+      error: () => {
+        console.log('Non authentifié - feedbacks non disponibles');
+      }
+    });
   }
 
   resolveFeedback(feedbackId: string): Observable<Feedback> {
-    return this.http.patch<Feedback>(
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.patch<ApiResponse<Feedback>>(
       `${this.apiUrl}/${feedbackId}`,
-      { resolved: true }
+      { resolved: true },
+      { headers }
     ).pipe(
+      map(response => response.data),
       tap(updatedFeedback => {
         const current = this.feedbacksSubject.value;
-        const index = current.findIndex(f => f.id === feedbackId);
+        const index = current.findIndex(f => (f.id || f._id) === feedbackId);
         if (index > -1) {
           current[index] = updatedFeedback;
           this.feedbacksSubject.next([...current]);
@@ -69,11 +111,30 @@ export class FeedbackService {
   }
 
   deleteFeedback(feedbackId: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${feedbackId}`).pipe(
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.delete<any>(
+      `${this.apiUrl}/${feedbackId}`,
+      { headers }
+    ).pipe(
       tap(() => {
         const current = this.feedbacksSubject.value;
-        this.feedbacksSubject.next(current.filter(f => f.id !== feedbackId));
+        this.feedbacksSubject.next(current.filter(f => (f.id || f._id) !== feedbackId));
       })
+    );
+  }
+
+  getStats(): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<ApiResponse<any>>(`${this.apiUrl}/stats`, { headers }).pipe(
+      map(response => response.data)
     );
   }
 }

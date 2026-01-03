@@ -53,11 +53,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
-
     if (!password || !confirmPassword) {
       return null;
     }
-
     return password.value === confirmPassword.value ? null : { passwordMismatch: true };
   }
 
@@ -78,7 +76,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   getPasswordError(): string {
     const control = this.signupForm.get('password');
     if (control?.hasError('required')) return 'Mot de passe requis';
-    if (control?.hasError('minlength')) return 'Minimum 12 caractères';
+    if (control?.hasError('minlength')) return 'Minimum 8 caractères';
     return '';
   }
 

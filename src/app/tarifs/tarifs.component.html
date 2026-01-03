@@ -9,15 +9,15 @@
       Découvrez mes offres et choisissez la formule adaptée à votre projet.
     </p>
     <p class="fade-up-delay about-modern">Inclus dans chaque formule :</p>
-    <ul class="list-inline small fade-up-delay mb-5 about-modern">
-      <li class="list-inline-item mx-2">💼 Facturation</li>
-      <li class="list-inline-item mx-2">🚀 Livraison tous les accès</li>
-      <li class="list-inline-item mx-2">⏱ Engagement sur les délais</li>
+    <ul class="list-inline small mb-5 about-modern">
+      <li class="list-inline-item mx-2"><ng-icon id="icon" name="bootstrapBriefcaseFill"></ng-icon> Facturation</li>
+      <li class="list-inline-item mx-2"><ng-icon id="icon" name="bootstrapRocketTakeoff"></ng-icon> Livraison tous les accès</li>
+      <li class="list-inline-item mx-2"><ng-icon id="icon" name="bootstrapStopwatch"></ng-icon> Engagement sur les délais</li>
       <li class="list-inline-item mx-2">
-        💾 Sauvegarde du site avant mise en ligne
+        <ng-icon id="icon" name="bootstrapFloppy2Fill"></ng-icon> Sauvegarde du site avant mise en ligne
       </li>
       <li class="list-inline-item mx-2">
-        📄 Mentions légales, politique de confidentialité
+        <ng-icon id="icon" name="bootstrapFileEarmarkFill"></ng-icon> Mentions légales, politique de confidentialité
       </li>
     </ul>
   </div>
@@ -43,7 +43,7 @@
           À partir de <span>{{ formule.prix }}</span>
         </h4>
         <ul class="text-start list-unstyled small">
-          <li *ngFor="let item of formule.details">• {{ item }}</li>
+          <li *ngFor="let item of formule.details"><ng-icon id="icon" name="bootstrapCheck2Circle" /> {{ item }}</li>
         </ul>
         <p class="small about-modern mt-3">{{ formule.delais }}</p>
       </div>

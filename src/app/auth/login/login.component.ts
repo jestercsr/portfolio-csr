@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
-
     if (this.authService.isAuthenticated()) {
       this.router.navigateByUrl(this.returnUrl);
     }
@@ -57,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   getPasswordError(): string {
     const control = this.loginForm.get('password');
     if (control?.hasError('required')) return 'Mot de passe requis';
-    if (control?.hasError('minlength')) return 'Minimum 12 caractères';
+    if (control?.hasError('minlength')) return 'Minimum 8 caractères';
     return '';
   }
 
