@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Feedback, FeedbackService } from '../_service/feedback.service';
+import { AuthService } from '../_service/auth.service';
+import { Router } from '@angular/router';
 import { NgFor, NgIf, SlicePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
@@ -33,7 +35,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private feedbackService: FeedbackService, private titleService: Title) {
+  constructor(
+    private feedbackService: FeedbackService,
+    private authService: AuthService,
+    private router: Router,
+    private titleService: Title
+  ) {
     this.titleService.setTitle('Dashboard - Portfolio de Jester CESAR');
   }
 
@@ -216,6 +223,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
     link.download = `feedbacks-${new Date().toISOString()}.json`;
     link.click();
     URL.revokeObjectURL(url);
+  }
+
+  logout(): void {
+    if (confirm('Êtes-vous sûr de vouloir vous déconnecter ?')) {
+      this.authService.logout()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: () => {
+            console.log('Déconnexion réussie');
+            this.router.navigateByUrl('/');
+          },
+          error: (error) => {
+            console.error('Erreur lors de la déconnexion:', error);
+            this.router.navigateByUrl('/');
+          }
+        });
+    }
   }
 
   ngOnDestroy(): void {
