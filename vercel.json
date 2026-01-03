@@ -1,10 +1,10 @@
 {
-  "buildCommand": "ng build",
-  "outputDirectory": "dist",
+  "buildCommand": "ng build --configuration production",
+  "outputDirectory": "dist/portfolio-csr/browser",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
