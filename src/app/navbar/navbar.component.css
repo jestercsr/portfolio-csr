@@ -2,11 +2,7 @@
   transition: all 0.4s ease;
   backdrop-filter: blur(12px);
   z-index: 1000;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.85),
-    rgba(255, 255, 255, 0.9)
-  );
+  background-color: transparent;
   box-shadow: none;
   border-radius: 0;
 }

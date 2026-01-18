@@ -6,54 +6,97 @@
 
   <div class="modal-body">
     <!-- AFFICHAGE POUR LES JEUX -->
-    <div *ngIf="isGame()" class="game-modal-content">
-      <div class="game-split-container">
-        <!-- Section Gameplay -->
-        <div class="game-section gameplay-section">
-          <div class="section-header">
-            <h4>Gameplay</h4>
-          </div>
+    <div *ngIf="isGame()" class="sandbox-modal">
+      <!-- HEADER -->
+      <div class="sandbox-header">
+        <div class="sandbox-tabs">
+          <button
+            class="tab-btn"
+            [class.active]="activeTab === 'preview'"
+            (click)="activeTab = 'preview'"
+          >
+            Preview
+          </button>
+          <button
+            class="tab-btn"
+            [class.active]="activeTab === 'code'"
+            (click)="activeTab = 'code'"
+          >
+            Code
+          </button>
+        </div>
+      </div>
+      <!-- BODY -->
+      <div class="sandbox-body">
+        <div
+          class="sandbox-panel preview-panel"
+          [class.hidden]="activeTab === 'code'"
+        >
           <iframe
-            [src]="getGameUrl() | safe: 'resourceUrl'"
-            class="game-iframe"
-            title="Gameplay - {{ project.nom }}"
-            allow="scripts"
+            [src]="getGameUrl() | safe:'resourceUrl'"
+            class="sandbox-iframe"
+            title="Preview - {{ project.nom }}"
           ></iframe>
         </div>
-
-        <!-- Section Code Source -->
-        <div class="game-section code-section">
-          <div class="section-header">
-            <h4>Code Source</h4>
-          </div>
-          <div class="code-content">
-            <div class="projet-modern small">
-              <p class="mb-3">{{ project.description }}</p>
-              
-              <div class="tech-stack mb-4">
-                <h5 class="projet-modern small mb-2">Stack Technologique</h5>
-                <div class="tags-container">
-                  <span
-                    *ngFor="let tag of project.tags"
-                    class="tag-pill"
-                    [style.borderColor]="tag.color"
-                  >
-                    {{ tag }}
-                  </span>
-                </div>
-              </div>
-
-              <div class="code-actions">
-                <a
-                  [href]="getSourceCodeUrl()"
-                  target="_blank"
-                  class="btn btn-outline-primary btn-sm me-2"
+        <!-- CODE PANEL -->
+        <div
+          class="sandbox-panel code-panel"
+          [class.hidden]="activeTab === 'preview'"
+        >
+          <!-- FILE EXPLORER -->
+          <aside class="file-explorer">
+            <ng-template #recursiveTree let-nodes let-level="level">
+              <ng-container *ngFor="let node of nodes">
+                <div
+                  *ngIf="node.type === 'folder'"
+                  class="tree-item folder"
+                  [style.paddingLeft.px]="level * 14"
                 >
-                  <i class="bi bi-github"></i> GitHub
-                </a>
-              </div>
+                  <div
+                    class="folder-label"
+                    (click)="toggleFolder(node)"
+                  >
+                    <span class="iconify" [attr.data-icon]="node.expanded ? 'mdi:chevron-down' : 'mdi:chevron-right'" data-inline="false" style="color:#888;"></span>
+                    <!-- icône dossier -->
+                    <span class="iconify" [attr.data-icon]="getFileIcon(node.name, node.type === 'folder').icon" data-inline="false"></span>
+                    <span>{{ node.name }}</span>
+                  </div>
+
+                  <div *ngIf="node.expanded">
+                    <ng-container
+                      *ngTemplateOutlet="recursiveTree; context: { $implicit: node.children, level: level + 1 }"
+                    ></ng-container>
+                  </div>
+                </div>
+                <div
+                  *ngIf="node.type === 'file'"
+                  class="tree-item file"
+                  [class.active]="node === selectedFile"
+                  [style.paddingLeft.px]="level * 14 + 22"
+                  (click)="selectFile(node)"
+                >
+                  <span class="iconify" [attr.data-icon]="getFileIcon(node.name).icon" data-inline="false"></span>
+                  <span>{{ node.name }}</span>
+                </div>
+              </ng-container>
+            </ng-template>
+
+            <ng-container
+              *ngTemplateOutlet="recursiveTree; context: { $implicit: fileTree, level: 0 }"
+            ></ng-container>
+          </aside>
+
+          <!-- CODE VIEW -->
+          <section class="editor-container">
+            <div class="line-numbers">
+              <span *ngFor="let _ of fileContent.split('\n'); let i = index">
+                {{ i + 1 }}
+              </span>
             </div>
-          </div>
+            <div class="code-viewer flex-fill ps-3">
+              <pre><code #codeBlock class="language-ts">{{ fileContent }}</code></pre>
+            </div>
+          </section>
         </div>
       </div>
     </div>
