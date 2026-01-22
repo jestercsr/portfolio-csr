@@ -74,6 +74,7 @@ export class TarifsComponent {
     { type: 'Site vitrine', prix: '250', detail: '250 € / jour' },
     { type: 'Site e-commerce', prix: '350', detail: '350 € / jour' },
     { type: 'Application web', prix: '500', detail: '500 € / jour' },
+    { type: 'Application mobile', prix: '3000', detail: '2000 € - 8000 €' },
     { type: 'Site no-code', prix: '500', detail: '500 €' },
     { type: 'Refonte Backend', prix: '600', detail: '300 € - 1000 €' },
     { type: 'Refonte Frontend', prix: '3800', detail: '1800 € - 5500 €' },

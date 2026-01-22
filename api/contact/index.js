@@ -30,6 +30,11 @@ export default async function handler(req, res) {
   }
 
   try {
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Variables d\'environnement manquantes: EMAIL_USER ou EMAIL_PASS');
+      return res.status(500).json({ error: 'Erreur de configuration serveur' });
+    }
+
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -37,6 +42,8 @@ export default async function handler(req, res) {
         pass: process.env.EMAIL_PASS,
       },
     });
+
+    await transporter.verify();
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
@@ -55,6 +62,9 @@ export default async function handler(req, res) {
     res.status(200).json({ success: true, message: 'Message envoyé avec succès' });
   } catch (err) {
     console.error('Erreur lors de l\'envoi:', err);
-    res.status(500).json({ error: 'Erreur lors de l\'envoi du message' });
+    res.status(500).json({ 
+      error: 'Erreur lors de l\'envoi du message',
+      details: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
   }
 }

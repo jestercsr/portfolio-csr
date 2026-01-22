@@ -16,6 +16,7 @@ export class ContactService {
   }): Observable<any> {
     return this.http.post(this.apiUrl, data);
   }
+
   sendMessageViaML(data: {
     name: string;
     email: string;
